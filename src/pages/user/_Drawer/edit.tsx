@@ -217,7 +217,7 @@ const DrawerEdit: FC<drawerEditProps> = (props) => {
               id: 'module.user.drawer.edit.expired_at.placeholder',
             })}
             className="w-100"
-            defaultValue={expiredAt ? moment(expiredAt) : undefined}
+            defaultValue={expiredAt ? moment.unix(expiredAt) : undefined}
             onChange={(value: Moment | null) => {
               if (value !== null) {
                 setExpiredAt(value.unix())
