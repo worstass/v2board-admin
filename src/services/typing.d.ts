@@ -217,16 +217,16 @@ declare namespace API {
       id: number
       name: string
       content: string
-      group_id: number
+      group_id: number | null 
       transfer_enable: string
-      month_price: string
-      quarter_price: string
-      half_year_price: string
-      year_price: string
-      two_year_price: string
-      three_year_price: string
-      onetime_price: string
-      reset_price: string
+      month_price: number | null
+      quarter_price: number | null
+      half_year_price: number | null
+      year_price: number | null 
+      two_year_price: number | null 
+      three_year_price: number | null
+      onetime_price: number | null
+      reset_price: number| null
     }
 
     interface PlanSaveResult {

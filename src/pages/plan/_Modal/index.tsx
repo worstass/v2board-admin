@@ -53,14 +53,30 @@ const ModalPlan: FC<modalPlanProps> = (props) => {
       transfer_enable: transferEnableRef.current?.input.value,
       name: nameRef.current?.input.value,
       group_id: groupID,
-      month_price: monthPriceRef.current?.input.value,
-      quarter_price: quarterPriceRef.current?.input.value,
-      half_year_price: halfYearPriceRef.current?.input.value,
-      year_price: yearPriceRef.current?.input.value,
-      two_year_price: twoYearPriceRef.current?.input.value,
-      three_year_price: threeYearPriceRef.current?.input.value,
-      onetime_price: onetimePriceRef.current?.input.value,
-      reset_price: resetPriceRef.current?.input.value,
+      month_price: monthPriceRef.current?.input.value
+        ? Number(monthPriceRef.current?.input.value as string).valueOf() * 100
+        : null,
+      quarter_price: quarterPriceRef.current?.input.value
+        ? Number(quarterPriceRef.current?.input.value as string).valueOf() * 100
+        : null,
+      half_year_price: halfYearPriceRef.current?.input.value
+        ? Number(halfYearPriceRef.current?.input.value as string).valueOf() * 100
+        : null,
+      year_price: yearPriceRef.current?.input.value
+        ? Number(yearPriceRef.current?.input.value as string).valueOf() * 100
+        : null,
+      two_year_price: twoYearPriceRef.current?.input.value
+        ? Number(twoYearPriceRef.current?.input.value).valueOf() * 100
+        : null,
+      three_year_price: threeYearPriceRef.current?.input.value
+        ? Number(threeYearPriceRef.current?.input.value).valueOf() * 100
+        : null,
+      onetime_price: onetimePriceRef.current?.input.value
+        ? Number(onetimePriceRef.current?.input.value).valueOf() * 100
+        : null,
+      reset_price: resetPriceRef.current?.input.value
+        ? Number(resetPriceRef.current?.input.value).valueOf() * 100
+        : null,
     }
 
     const planSaveResult = await planSave(saveParams)
@@ -122,31 +138,70 @@ const ModalPlan: FC<modalPlanProps> = (props) => {
           <Col span={4} className="pl-1 pr-1">
             <div className="form-group">
               <label>{intl.formatMessage({ id: 'module.plan.modal.month_price' })}</label>
-              <Input ref={monthPriceRef} defaultValue={defaultPlan?.month_price as number} />
+              <Input
+                ref={monthPriceRef}
+                defaultValue={
+                  defaultPlan?.month_price !== null
+                    ? (defaultPlan?.month_price as number) / 100
+                    : undefined
+                }
+              />
             </div>
           </Col>
           <Col span={4} className="pl-1 pr-1">
             <div className="form-group">
               <label>{intl.formatMessage({ id: 'module.plan.modal.quarter_price' })}</label>
-              <Input ref={quarterPriceRef} defaultValue={defaultPlan?.quarter_price as number} />
+              <Input
+                ref={quarterPriceRef}
+                defaultValue={
+                  defaultPlan?.quarter_price !== null
+                    ? (defaultPlan?.quarter_price as number) / 100
+                    : undefined
+                }
+                type="number"
+              />
             </div>
           </Col>
           <Col span={4} className="pl-1 pr-1">
             <div className="form-group">
               <label>{intl.formatMessage({ id: 'module.plan.modal.half_year_price' })}</label>
-              <Input ref={halfYearPriceRef} defaultValue={defaultPlan?.half_year_price as number} />
+              <Input
+                ref={halfYearPriceRef}
+                defaultValue={
+                  defaultPlan?.half_year_price !== null
+                    ? (defaultPlan?.half_year_price as number) / 100
+                    : undefined
+                }
+                type="number"
+              />
             </div>
           </Col>
           <Col span={4} className="pl-1 pr-1">
             <div className="form-group">
               <label>{intl.formatMessage({ id: 'module.plan.modal.year_price' })}</label>
-              <Input ref={yearPriceRef} defaultValue={defaultPlan?.year_price as number} />
+              <Input
+                ref={yearPriceRef}
+                defaultValue={
+                  defaultPlan?.year_price !== null
+                    ? (defaultPlan?.year_price as number) / 100
+                    : undefined
+                }
+                type="number"
+              />
             </div>
           </Col>
           <Col span={4} className="pl-1 pr-1">
             <div className="form-group">
               <label>{intl.formatMessage({ id: 'module.plan.modal.two_year_price' })}</label>
-              <Input ref={twoYearPriceRef} defaultValue={defaultPlan?.two_year_price as number} />
+              <Input
+                ref={twoYearPriceRef}
+                defaultValue={
+                  defaultPlan?.two_year_price !== null
+                    ? (defaultPlan?.two_year_price as number) / 100
+                    : undefined
+                }
+                type="number"
+              />
             </div>
           </Col>
           <Col span={4} className="pl-1 pr-1">
@@ -154,7 +209,12 @@ const ModalPlan: FC<modalPlanProps> = (props) => {
               <label>{intl.formatMessage({ id: 'module.plan.modal.three_year_price' })}</label>
               <Input
                 ref={threeYearPriceRef}
-                defaultValue={defaultPlan?.three_year_price as number}
+                defaultValue={
+                  defaultPlan?.two_year_price !== null
+                    ? (defaultPlan?.three_year_price as number) / 100
+                    : undefined
+                }
+                type="number"
               />
             </div>
           </Col>
@@ -163,13 +223,29 @@ const ModalPlan: FC<modalPlanProps> = (props) => {
           <Col span={12} className="pl-1 pr-1">
             <div className="form-group">
               <label>{intl.formatMessage({ id: 'module.plan.modal.onetime_price' })}</label>
-              <Input ref={onetimePriceRef} defaultValue={defaultPlan?.onetime_price as number} />
+              <Input
+                ref={onetimePriceRef}
+                defaultValue={
+                  defaultPlan?.onetime_price !== null
+                    ? (defaultPlan?.onetime_price as number) / 100
+                    : undefined
+                }
+                type="number"
+              />
             </div>
           </Col>
           <Col span={12} className="pl-1 pr-1">
             <div className="form-group">
               <label>{intl.formatMessage({ id: 'module.plan.modal.reset_price' })}</label>
-              <Input ref={resetPriceRef} defaultValue={defaultPlan?.reset_price as number} />
+              <Input
+                ref={resetPriceRef}
+                defaultValue={
+                  defaultPlan?.reset_price !== null
+                    ? (defaultPlan?.reset_price as number) / 100
+                    : undefined
+                }
+                type="number"
+              />
             </div>
           </Col>
         </Row>
