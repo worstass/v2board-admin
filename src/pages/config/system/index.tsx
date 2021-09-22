@@ -164,57 +164,43 @@ const ConfigSystemPage: FC = () => {
     <>
       <div className="p-0 p-lg-4">
         <div className="mb-0 block border-bottom">
-          <Tabs defaultActiveKey="site" size="large" type="line">
-            <TabPane tab={intl.formatMessage({ id: 'module.config.system.site' })} key="site">
-              <Spin spinning={siteProps === undefined}>
-                <FormSite {...siteProps} />
-              </Spin>
-            </TabPane>
-            <TabPane
-              tab={intl.formatMessage({ id: 'module.config.system.subscribe' })}
-              key="subscribe"
-            >
-              <Spin spinning={subscribeProps === undefined}>
-                <FormSubscribe {...subscribeProps} />
-              </Spin>
-            </TabPane>
-            <TabPane tab={intl.formatMessage({ id: 'module.config.system.invite' })} key="invite">
-              <Spin spinning={inviteProps === undefined}>
-                <FormInvite {...inviteProps} />
-              </Spin>
-            </TabPane>
-            <TabPane
-              tab={intl.formatMessage({ id: 'module.config.system.frondend' })}
-              key="frondend"
-            >
-              <Spin spinning={frontendProps === undefined}>
-                <FormFrontend {...frontendProps} />
-              </Spin>
-            </TabPane>
-            <TabPane tab={intl.formatMessage({ id: 'module.config.system.server' })} key="server">
-              <Spin spinning={serverProps === undefined}>
-                <FormServer {...serverProps} />
-              </Spin>
-            </TabPane>
-            <TabPane tab={intl.formatMessage({ id: 'module.config.system.email' })} key="email">
-              <Spin spinning={emailProps === undefined}>
-                <FormEmail {...emailProps} />
-              </Spin>
-            </TabPane>
-            <TabPane
-              tab={intl.formatMessage({ id: 'module.config.system.telegram' })}
-              key="telegram"
-            >
-              <Spin spinning={telegramProps === undefined}>
-                <FormTelegram {...telegramProps} />
-              </Spin>
-            </TabPane>
-            <TabPane tab={intl.formatMessage({ id: 'module.config.system.app' })} key="app">
-              <Spin spinning={appProps === undefined}>
-                <FormApp {...appProps} />
-              </Spin>
-            </TabPane>
-          </Tabs>
+          <Spin spinning={siteProps === undefined}>
+            <Tabs defaultActiveKey="site" size="large" type="line">
+              <TabPane tab={intl.formatMessage({ id: 'module.config.system.site' })} key="site">
+                {siteProps && <FormSite {...siteProps} />}
+              </TabPane>
+              <TabPane
+                tab={intl.formatMessage({ id: 'module.config.system.subscribe' })}
+                key="subscribe"
+              >
+                {subscribeProps && <FormSubscribe {...subscribeProps} />}
+              </TabPane>
+              <TabPane tab={intl.formatMessage({ id: 'module.config.system.invite' })} key="invite">
+                {inviteProps && <FormInvite {...inviteProps} />}
+              </TabPane>
+              <TabPane
+                tab={intl.formatMessage({ id: 'module.config.system.frondend' })}
+                key="frondend"
+              >
+                {frontendProps && <FormFrontend {...frontendProps} />}
+              </TabPane>
+              <TabPane tab={intl.formatMessage({ id: 'module.config.system.server' })} key="server">
+                {serverProps && <FormServer {...serverProps} />}
+              </TabPane>
+              <TabPane tab={intl.formatMessage({ id: 'module.config.system.email' })} key="email">
+                {emailProps && <FormEmail {...emailProps} />}
+              </TabPane>
+              <TabPane
+                tab={intl.formatMessage({ id: 'module.config.system.telegram' })}
+                key="telegram"
+              >
+                {telegramProps && <FormTelegram {...telegramProps} />}
+              </TabPane>
+              <TabPane tab={intl.formatMessage({ id: 'module.config.system.app' })} key="app">
+                {appProps && <FormApp {...appProps} />}
+              </TabPane>
+            </Tabs>
+          </Spin>
         </div>
       </div>
     </>
