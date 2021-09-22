@@ -488,7 +488,7 @@ export default {
   'module.user.list.column.banned': '状态',
   'module.user.list.column.banned.off': '正常',
   'module.user.list.column.banned.on': '停用',
-  'module.user.list.column.transfer_enable': '流量',
+  'module.user.list.column.transfer_enable': '流量(G)',
   'module.user.list.column.expired_at': '到期时间',
   'module.user.list.column.expired_at.nerver_expire': '长期有效',
   'module.user.list.column.created_at': '加入时间',
