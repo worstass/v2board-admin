@@ -18,6 +18,7 @@ const TicketDetailPage: FC<IRouteComponentProps> = (props) => {
   const checkDelay: number = 5000
   const [checkInterval, setCheckIntelVal] = useState<number | null>(checkDelay)
   const messageInputRef = useRef<HTMLInputElement>(null)
+  const formRef = useRef<HTMLFormElement>(null);
   const { id } = match.params as { id: number }
   const intl = useIntl()
 
@@ -67,6 +68,7 @@ const TicketDetailPage: FC<IRouteComponentProps> = (props) => {
       if (ticketReplyResult === undefined) {
         return
       }
+      formRef.current?.reset()
       message.success(intl.formatMessage({ id: 'common.message.request_success' }))
     }
   }
@@ -159,6 +161,7 @@ const TicketDetailPage: FC<IRouteComponentProps> = (props) => {
             })}
           </div>
           <div className="js-chat-form block-content p-2 bg-body-dark">
+            <form ref={formRef}>
             <input
               type="text"
               ref={messageInputRef}
@@ -170,6 +173,8 @@ const TicketDetailPage: FC<IRouteComponentProps> = (props) => {
                 }
               }}
             />
+            </form>
+
           </div>
         </div>
       </div>

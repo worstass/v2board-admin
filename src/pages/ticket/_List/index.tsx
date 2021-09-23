@@ -39,7 +39,10 @@ const List: FC<listProps> = (props) => {
   }
 
   const viewHandler = (id: number) => {
-    const idUrl = `${window.location.origin}/#/ticket/${id}`
+    const idUrl =
+      window.location.pathname !== '/'
+        ? `${window.location.origin}${window.location.pathname}/#/ticket/${id}`
+        : `${window.location.origin}/#/ticket/${id}`
     const awidth = 800
     const aheight = 600
     const atop = 0
