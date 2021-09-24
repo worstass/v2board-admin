@@ -525,7 +525,18 @@ export async function userBatchBan(
   body: API.Admin.UserBatchBanParams,
   options?: Record<string, any>,
 ) {
-  return request<API.Admin.UserBatchBanResult>('/api/v1/admin/user/ban', {
+  return request<API.Admin.UserBatchBanResult>('/api/v1/admin/user/batchBan', {
+    method: 'POST',
+    headers: {
+      'Content-Type': apiContentType,
+    },
+    data: body,
+    ...(options || {}),
+  })
+}
+
+export async function userDrop(body: API.Admin.UserDropParams, options?: Record<string, any>) {
+  return request<API.Admin.UserDropResult>('/api/v1/admin/user/drop', {
     method: 'POST',
     headers: {
       'Content-Type': apiContentType,

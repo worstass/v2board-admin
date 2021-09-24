@@ -3,7 +3,7 @@ import type { TablePaginationConfig, SorterResult, FilterValue } from 'antd/lib/
 import { message, Space, Tooltip } from 'antd'
 import { Table, Badge, Menu, Tag, Dropdown, Modal } from 'antd'
 import { useState } from 'react'
-import { userResetSecret } from '@/services'
+import { userResetSecret, userDrop} from '@/services'
 import { ExclamationCircleOutlined } from '@ant-design/icons'
 import {
   QuestionCircleOutlined,
@@ -13,6 +13,7 @@ import {
   ReloadOutlined,
   AccountBookOutlined,
   UsergroupAddOutlined,
+  DeleteOutlined,
 } from '@ant-design/icons'
 import { useIntl, Link } from 'umi'
 import React from 'react'
@@ -42,6 +43,7 @@ export interface listProps {
   plans: API.Admin.PlanItem[]
   onChange: (values: changeValues) => void
   onEditSuccess: () => void
+  onDropSuccess: () => void
 }
 
 const List: FC<listProps> = (props) => {
@@ -103,6 +105,37 @@ const List: FC<listProps> = (props) => {
             <Space>
               <EditOutlined style={{ verticalAlign: '0.05rem' }} />
               {intl.formatMessage({ id: 'module.user.list.column.action.edit' })}
+            </Space>
+          </Link>
+        </Menu.Item>
+        <Menu.Item key="drop">
+          <Link
+            to=""
+            onClick={(e: React.MouseEvent) => {
+              e.preventDefault()
+              confirm({
+                title: intl.formatMessage({ id: 'module.user.action.drop.confirm.title' }),
+                icon: <ExclamationCircleOutlined />,
+                content: intl.formatMessage(
+                  { id: 'module.user.action.drop.confirm.content' },
+                  { email: record.email },
+                ),
+                onOk: async () => {
+                  const userDropResult = await userDrop({ id: record.id })
+                  if (userDropResult === undefined) {
+                    return
+                  }
+                  message.success(
+                    intl.formatMessage({ id: 'module.user.action.drop.message.success' }),
+                  )
+                  onEditSuccess()
+                },
+              })
+            }}
+          >
+            <Space>
+              <DeleteOutlined style={{ verticalAlign: '0.05rem' }} />
+              {intl.formatMessage({ id: 'module.user.list.column.action.drop' })}
             </Space>
           </Link>
         </Menu.Item>

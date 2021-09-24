@@ -223,6 +223,9 @@ const UserPage: FC = () => {
             onEditSuccess={() => {
               setListUpdateStatus(true)
             }}
+            onDropSuccess={() => {
+              setListUpdateStatus(true)
+            }}
           />
         </div>
       </div>
