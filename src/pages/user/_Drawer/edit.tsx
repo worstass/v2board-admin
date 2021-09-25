@@ -221,6 +221,8 @@ const DrawerEdit: FC<drawerEditProps> = (props) => {
             onChange={(value: Moment | null) => {
               if (value !== null) {
                 setExpiredAt(value.unix())
+              } else {
+                setExpiredAt(null)
               }
             }}
           />
