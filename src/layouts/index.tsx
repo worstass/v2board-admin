@@ -9,8 +9,6 @@ import {
   colorTheme,
   isNoLaooutPath,
   isStandAlone,
-  isProduction,
-  envFile,
 } from '@/default'
 import { useState } from 'react'
 import Header from './Header'
@@ -40,19 +38,13 @@ const LayoutPage: FC<IRouteComponentProps> = (props) => {
   )
 
   let themePath: string
-  let envPath: string = ''
   if (isStandAlone) {
     themePath = `./theme/${colorTheme}.css`
   } else {
     themePath = `/assets/admin/theme/${colorTheme}.css`
   }
 
-  if (isProduction && isStandAlone) {
-    envPath = `./${envFile}`
-  }
-
-  useExternal(envPath, { async: false })
-  useExternal(themePath, { async: false })
+  useExternal(themePath, { async: false, type: 'css' })
 
   useTitle(title)
   if (isNoLaooutPath(location.pathname)) {

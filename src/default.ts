@@ -20,7 +20,6 @@ export const isNoFetchUserPath = (path: string): boolean => {
   return noFetcnUserPaths.includes(path)
 }
 
-export const envFile = 'env.js'
 export const apiContentType = 'application/json'
 export const apiHost = window.settings?.host ?? ''
 export const title = window.settings?.title ?? 'v2board'
@@ -33,7 +32,6 @@ export const version = window.settings?.version
   ? window.settings?.version?.split('.').slice(0, 3).join('.')
   : undefined
 export const isStandAlone = version === undefined
-export const isProduction = process.env.NODE_ENV === 'production'
 
 export const currencyFormatter = new Intl.NumberFormat('zh-CN', {
   style: 'currency',

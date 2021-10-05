@@ -2,7 +2,10 @@ import { defineConfig } from 'umi'
 import chainWebpack from './webpack'
 
 const isProduction = process.env.NODE_ENV === 'production'
+const isStandalone = process.env.STANDALONE !== undefined
 console.log('isProduction:', isProduction)
+console.log('isStandalone:', isStandalone)
+
 export default defineConfig({
   hash: false,
   nodeModulesTransform: {
@@ -32,4 +35,12 @@ export default defineConfig({
   },
   chainWebpack: isProduction ? chainWebpack : undefined,
   chunks: isProduction ? ['vendors', 'compoments', 'umi'] : undefined,
+  headScripts:
+    isProduction && isStandalone
+      ? [
+          {
+            src: '/env.js',
+          },
+        ]
+      : undefined,
 })
