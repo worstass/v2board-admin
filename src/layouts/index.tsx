@@ -33,7 +33,7 @@ const LayoutPage: FC<IRouteComponentProps> = (props) => {
     {
       'sidebar-o-xs': sideOpen,
       'page-header-dark': headerTheme === 'dark',
-      'page-sidebar-dark': sidebarTheme === 'dark',
+      'sidebar-dark': sidebarTheme === 'dark',
     },
   )
 
