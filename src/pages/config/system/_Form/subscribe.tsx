@@ -192,11 +192,11 @@ const FormSubscribe: FC<Partial<formSubscribeProps>> = (props) => {
         <div className="row p-4 border-bottom">
           <div className="col-lg-6">
             <div className="font-weight-bold my-1">
-              {intl.formatMessage({ id: 'module.config.system.subscribe.renew_order_event_id' })}
+              {intl.formatMessage({ id: 'module.config.system.subscribe.change_order_event_id' })}
             </div>
             <div className="font-size-sm my-1">
               {intl.formatMessage({
-                id: 'module.config.system.subscribe.renew_order_event_id.tip',
+                id: 'module.config.system.subscribe.change_order_event_id.tip',
               })}
             </div>
           </div>
@@ -204,7 +204,7 @@ const FormSubscribe: FC<Partial<formSubscribeProps>> = (props) => {
             <select
               className="form-control"
               placeholder={intl.formatMessage({
-                id: 'module.config.system.subscribe.renew_order_event_id.placeholder',
+                id: 'module.config.system.subscribe.change_order_event_id.placeholder',
               })}
               defaultValue={changeOrderEventID}
               onChange={changeHandler}
