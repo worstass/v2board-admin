@@ -41,7 +41,7 @@ const FormEmail: FC<Partial<formEmailProps>> = (props) => {
   const { run } = useDebounceFn(
     () => {
       const data: Record<string, any> = {
-        email_template: emailEncryptionRef.current?.value,
+        email_template: emailTemplateRef.current?.value,
         email_host: emailHostRef.current?.value,
         email_port: Number(emailPortRef.current?.value).valueOf(),
         email_username: emailUsernameRef.current?.value,
