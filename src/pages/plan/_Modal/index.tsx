@@ -141,7 +141,7 @@ const ModalPlan: FC<modalPlanProps> = (props) => {
               <Input
                 ref={monthPriceRef}
                 defaultValue={
-                  defaultPlan?.month_price !== null
+                  defaultPlan !== undefined && defaultPlan?.month_price !== null
                     ? (defaultPlan?.month_price as number) / 100
                     : undefined
                 }
@@ -154,7 +154,7 @@ const ModalPlan: FC<modalPlanProps> = (props) => {
               <Input
                 ref={quarterPriceRef}
                 defaultValue={
-                  defaultPlan?.quarter_price !== null
+                  defaultPlan !== undefined && defaultPlan?.quarter_price !== null
                     ? (defaultPlan?.quarter_price as number) / 100
                     : undefined
                 }
@@ -168,7 +168,7 @@ const ModalPlan: FC<modalPlanProps> = (props) => {
               <Input
                 ref={halfYearPriceRef}
                 defaultValue={
-                  defaultPlan?.half_year_price !== null
+                  defaultPlan !== undefined && defaultPlan?.half_year_price !== null
                     ? (defaultPlan?.half_year_price as number) / 100
                     : undefined
                 }
@@ -182,7 +182,7 @@ const ModalPlan: FC<modalPlanProps> = (props) => {
               <Input
                 ref={yearPriceRef}
                 defaultValue={
-                  defaultPlan?.year_price !== null
+                  defaultPlan !== undefined && defaultPlan?.year_price !== null
                     ? (defaultPlan?.year_price as number) / 100
                     : undefined
                 }
@@ -196,7 +196,7 @@ const ModalPlan: FC<modalPlanProps> = (props) => {
               <Input
                 ref={twoYearPriceRef}
                 defaultValue={
-                  defaultPlan?.two_year_price !== null
+                  defaultPlan !== undefined && defaultPlan?.two_year_price !== null
                     ? (defaultPlan?.two_year_price as number) / 100
                     : undefined
                 }
@@ -210,7 +210,7 @@ const ModalPlan: FC<modalPlanProps> = (props) => {
               <Input
                 ref={threeYearPriceRef}
                 defaultValue={
-                  defaultPlan?.two_year_price !== null
+                  defaultPlan !== undefined && defaultPlan?.two_year_price !== null
                     ? (defaultPlan?.three_year_price as number) / 100
                     : undefined
                 }
@@ -226,7 +226,7 @@ const ModalPlan: FC<modalPlanProps> = (props) => {
               <Input
                 ref={onetimePriceRef}
                 defaultValue={
-                  defaultPlan?.onetime_price !== null
+                  defaultPlan !== undefined && defaultPlan?.onetime_price !== null
                     ? (defaultPlan?.onetime_price as number) / 100
                     : undefined
                 }
@@ -240,7 +240,7 @@ const ModalPlan: FC<modalPlanProps> = (props) => {
               <Input
                 ref={resetPriceRef}
                 defaultValue={
-                  defaultPlan?.reset_price !== null
+                  defaultPlan !== undefined && defaultPlan?.reset_price !== null
                     ? (defaultPlan?.reset_price as number) / 100
                     : undefined
                 }
