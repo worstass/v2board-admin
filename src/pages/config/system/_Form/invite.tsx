@@ -69,7 +69,7 @@ const FormInvite: FC<Partial<formInviteProps>> = (props) => {
         <div className="row p-4 border-bottom">
           <div className="col-lg-6">
             <div className="font-weight-bold my-1">
-              {intl.formatMessage({ id: 'module.config.system.frondend.frontend_theme' })}
+              {intl.formatMessage({ id: 'module.config.system.invite.invite_force' })}
             </div>
             <div className="font-size-sm my-1">
               {intl.formatMessage({ id: 'module.config.system.invite.invite_force.tip' })}
