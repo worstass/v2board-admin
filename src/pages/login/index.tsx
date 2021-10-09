@@ -3,7 +3,7 @@ import { login, checkAuth } from '@/services'
 import { history, useModel, Link, useIntl } from 'umi'
 import { useLockFn } from 'ahooks'
 import delay from '@umijs/utils/lib/delay/delay'
-import { title, description, backgroundUrl, noPermissionPath } from '@/default'
+import { title, backgroundUrl, noPermissionPath } from '@/default'
 
 const LoginPage: React.FC = () => {
   const { initialState, setInitialState } = useModel('@@initialState')
@@ -86,7 +86,9 @@ const LoginPage: React.FC = () => {
                 >
                   <span className="text-primary">{title}</span>
                 </Link>
-                <p className="text-uppercase font-w700 font-size-sm text-muted">{description}</p>
+                <p className="text-uppercase font-w700 font-size-sm text-muted">
+                  {intl.formatMessage({ id: 'common.login.description' })}
+                </p>
               </div>
 
               <div className="row no-gutters justify-content-center">

@@ -1,5 +1,6 @@
 export default {
   'common.login': '登入',
+  'common.login.description': '管理后台',
   'common.logout': '登出',
   'common.back_home': '返回首页',
   'common.back_login': '返回登录页面',

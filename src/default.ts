@@ -23,7 +23,6 @@ export const isNoFetchUserPath = (path: string): boolean => {
 export const apiContentType = 'application/json'
 export const apiHost = window.settings?.host ?? ''
 export const title = window.settings?.title ?? 'v2board'
-export const description = window.settings?.description ?? 'v2board is best'
 export const backgroundUrl = window.settings?.background_url ?? undefined
 export const sidebarTheme = window.settings?.theme?.sidebar ?? 'light'
 export const headerTheme = window.settings?.theme?.header ?? 'dark'
