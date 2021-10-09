@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 import { useState } from 'react'
-import { Link, history, useModel, useIntl } from 'umi'
+import { Link, useModel, useIntl } from 'umi'
 import { user } from '@/services'
 import { loginPath } from '@/default'
 import { Dropdown, Menu } from 'antd'
@@ -20,7 +20,7 @@ const DropDownUser: FC = () => {
     e.preventDefault()
     await user.logout()
     setInitialState((s) => ({ ...s, currentUser: undefined }))
-    history.replace(loginPath)
+    window.location.href = loginPath
   }
 
   const menu = () => (

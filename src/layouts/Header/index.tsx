@@ -2,6 +2,7 @@ import './style.less'
 import type { FC } from 'react'
 import DropDownUser from './DropDownUser'
 import { useModel } from 'umi'
+import DropDownDark from './DropDownDark'
 
 export interface slideOpenProps {
   onSideOpen: () => void
@@ -31,6 +32,7 @@ const Header: FC<slideOpenProps> = (props) => {
         <div className="v2board-header-title">
           {menuName !== '' ? menuName : menuIndex && menus.getName(menuIndex)}
         </div>
+        <DropDownDark />
         <DropDownUser />
       </div>
     </header>

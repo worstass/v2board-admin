@@ -18,10 +18,13 @@ import classNames from 'classnames/bind'
 import { useTitle, useExternal } from 'ahooks'
 import zhCN from 'antd/es/locale/zh_CN'
 import { ConfigProvider } from 'antd'
+import { useDarkreader } from 'react-darkreader'
 
 const LayoutPage: FC<IRouteComponentProps> = (props) => {
   const [sideOpen, setSideOpen] = useState(false)
   const { children, location } = props
+  const darkMode = localStorage.getItem('dark-mode') === '1' ? true : false
+  useDarkreader(darkMode)
 
   const containerClassNames = classNames(
     'sidebar-o',
