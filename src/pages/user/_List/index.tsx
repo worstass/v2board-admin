@@ -242,7 +242,7 @@ const List: FC<listProps> = (props) => {
         dataSource={dataSource}
         pagination={pagenationProps}
         rowKey="id"
-        scroll={{ x: true }}
+        scroll={{ x: '100vw', y: undefined }}
         onChange={tableChangeHandler}
         loading={dataSource === undefined}
       >
