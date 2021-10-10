@@ -43,4 +43,7 @@ export default defineConfig({
           },
         ]
       : undefined,
+  define: {
+    'process.env.STANDALONE': process.env.STANDALONE,
+  },
 })

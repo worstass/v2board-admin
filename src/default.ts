@@ -30,7 +30,7 @@ export const colorTheme = window.settings?.theme?.color ?? 'default'
 export const version = window.settings?.version
   ? window.settings?.version?.split('.').slice(0, 3).join('.')
   : undefined
-export const isStandAlone = version === undefined
+export const isStandAlone = process.env.STANDALONE !== undefined
 
 export const currencyFormatter = new Intl.NumberFormat('zh-CN', {
   style: 'currency',

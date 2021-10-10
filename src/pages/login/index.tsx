@@ -3,7 +3,7 @@ import { login, checkAuth } from '@/services'
 import { history, useModel, Link, useIntl } from 'umi'
 import { useLockFn } from 'ahooks'
 import delay from '@umijs/utils/lib/delay/delay'
-import { title, backgroundUrl, noPermissionPath } from '@/default'
+import { title, backgroundUrl, noPermissionPath, isStandAlone } from '@/default'
 
 const LoginPage: React.FC = () => {
   const { initialState, setInitialState } = useModel('@@initialState')
@@ -54,12 +54,16 @@ const LoginPage: React.FC = () => {
     const email = emailInputRef.current?.value as string
     const password = passwordInputRef.current?.value as string
 
-    const resp = await login({ email, password })
-    if (resp === undefined) {
+    const loginResult = await login({ email, password })
+    if (loginResult === undefined) {
       return
     }
 
-    if (!resp.data.is_admin) {
+    if (isStandAlone) {
+      localStorage.setItem('auth_data', loginResult.data.auth_data)
+    }
+
+    if (!loginResult.data.is_admin) {
       history.replace(noPermissionPath)
       return
     }
