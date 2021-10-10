@@ -23,6 +23,7 @@ const ModalPlan: FC<modalPlanProps> = (props) => {
   const [destroy, setDestroy] = useState(false)
   const [content, setContent] = useState('')
   const [groupID, setGroupID] = useState<number | undefined>(undefined)
+  const [resetTrafficMethod, setResetTrafficMethod] = useState<number | undefined | null>(undefined)
   const nameRef = useRef<Input>(null)
   const monthPriceRef = useRef<Input>(null)
   const quarterPriceRef = useRef<Input>(null)
@@ -77,6 +78,7 @@ const ModalPlan: FC<modalPlanProps> = (props) => {
       reset_price: resetPriceRef.current?.input.value
         ? Number(resetPriceRef.current?.input.value).valueOf() * 100
         : null,
+      reset_traffic_method: resetTrafficMethod,
     }
 
     const planSaveResult = await planSave(saveParams)
@@ -294,6 +296,45 @@ const ModalPlan: FC<modalPlanProps> = (props) => {
                   </Option>
                 )
               })}
+          </Select>
+        </div>
+
+        <div className="form-group">
+          <label>{intl.formatMessage({ id: 'module.plan.modal.reset_traffic_method' })}</label>
+          <Select
+            className="w-100"
+            placeholder={intl.formatMessage({
+              id: 'module.plan.modal.reset_traffic_method.placeholder',
+            })}
+            onChange={(value: number) => {
+              if (value === -1) {
+                setResetTrafficMethod(null)
+              } else {
+                setResetTrafficMethod(value as number)
+              }
+            }}
+            defaultValue={
+              defaultPlan?.reset_traffic_method === null ? -1 : defaultPlan?.reset_traffic_method
+            }
+          >
+            <Option key={-1} value={-1}>
+              {intl.formatMessage({ id: 'moudle.plan.modal.reset_traffic_method.option.system' })}
+            </Option>
+            <Option key={0} value={0}>
+              {intl.formatMessage({
+                id: 'moudle.plan.modal.reset_traffic_method.option.month_first_day',
+              })}
+            </Option>
+            <Option key={1} value={1}>
+              {intl.formatMessage({
+                id: 'moudle.plan.modal.reset_traffic_method.option.order_day',
+              })}
+            </Option>
+            <Option key={2} value={2}>
+              {intl.formatMessage({
+                id: 'moudle.plan.modal.reset_traffic_method.option.not_reset',
+              })}
+            </Option>
           </Select>
         </div>
         <ModalGroup

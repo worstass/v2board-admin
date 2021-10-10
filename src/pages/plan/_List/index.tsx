@@ -140,7 +140,7 @@ const List: FC<listProps> = (props) => {
         components={{ body: { wrapper: draggableContainer, row: draggableBodyRow } }}
         pagination={false}
         rowKey="id"
-        scroll={{ x: true }}
+        scroll={{ x: '100vw', y: undefined }}
         loading={dataSource === undefined}
       >
         <Column

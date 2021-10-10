@@ -181,6 +181,7 @@ declare namespace API {
       two_year_price: number | null
       updated_at?: number
       year_price: number | null
+      reset_traffic_method: number | null
     }
 
     interface PlansResult {
@@ -227,6 +228,7 @@ declare namespace API {
       three_year_price: number | null
       onetime_price: number | null
       reset_price: number | null
+      reset_traffic_method: number | null
     }
 
     interface PlanSaveResult {
