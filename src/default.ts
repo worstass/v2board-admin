@@ -1,7 +1,7 @@
 export const loginPath = '/login'
 export const notFoundPath = '/404'
 export const noPermissionPath = '/403'
-const noFetcnUserPaths: string[] = [loginPath, notFoundPath, noPermissionPath]
+const noFetchUserPaths: string[] = [loginPath, notFoundPath, noPermissionPath]
 const noLayoutPaths: RegExp[] = [/^\/login$/, /^\/404$/, /^\/403$/, /^\/ticket\/.+/]
 
 export const isNoLaooutPath = (path: string): boolean => {
@@ -17,7 +17,7 @@ export const isNoLaooutPath = (path: string): boolean => {
 }
 
 export const isNoFetchUserPath = (path: string): boolean => {
-  return noFetcnUserPaths.includes(path)
+  return noFetchUserPaths.includes(path)
 }
 
 export const apiContentType = 'application/json'
@@ -29,7 +29,7 @@ export const headerTheme = window.settings?.theme?.header ?? 'dark'
 export const colorTheme = window.settings?.theme?.color ?? 'default'
 export const version = window.settings?.version
   ? window.settings?.version?.split('.').slice(0, 3).join('.')
-  : undefined
+  : process.env.VERSION
 export const isStandAlone = process.env.STANDALONE !== undefined
 
 export const currencyFormatter = new Intl.NumberFormat('zh-CN', {
