@@ -313,7 +313,7 @@ export default {
   'module.server.manage.trojan.allow_insecure': '允许不安全',
   'module.server.manage.trojan.allow_insecure.option.off': '否',
   'module.server.manage.trojan.allow_insecure.option.on': '是',
-  'module.server.manage.trojan.server_name': '服务器名称指示(sni',
+  'module.server.manage.trojan.server_name': '服务器名称指示(sni)',
   'module.server.manage.trojan.server_name.placeholder': '当节点地址与证书不一致时用于证书验证',
   'module.server.manage.v2ray.tls': 'TLS',
   'module.server.manage.v2ray.tls.tip': '支持TLS需要先在节点/root/.server.crt及server.key',
