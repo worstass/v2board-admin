@@ -46,7 +46,7 @@ const LoginPage: React.FC = () => {
     delay(10).then(() => {
       const { query } = history.location
       const { redirect } = query as { redirect: string }
-      window.location.href = redirect || '/'
+      window.location.href = redirect || window.location.origin + window.location.pathname
     })
   }
 
