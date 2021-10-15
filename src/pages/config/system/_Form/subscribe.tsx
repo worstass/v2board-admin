@@ -1,7 +1,7 @@
 import type { FC } from 'react'
 import { useIntl } from 'umi'
 import { Switch } from 'antd'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { useDebounceFn } from 'ahooks'
 
 export interface formSubscribeProps {
@@ -25,21 +25,21 @@ const FormSubscribe: FC<Partial<formSubscribeProps>> = (props) => {
     onChange,
   } = props
 
-  const planChangeEnableRef = useRef<HTMLButtonElement>(null)
   const resetTrafficMethodRef = useRef<HTMLSelectElement>(null)
-  const surplusEnableRef = useRef<HTMLButtonElement>(null)
   const newOrderEventIDRef = useRef<HTMLSelectElement>(null)
   const renewOrderEventIDRef = useRef<HTMLSelectElement>(null)
   const changeOrderEventIDRef = useRef<HTMLSelectElement>(null)
+  const [switchPlanChangeEnable, setSwitchPlanChangeEnable] = useState(planChangeEnable)
+  const [switchSurplusEnable, setSwitchSurplusEnable] = useState(surplusEnable)
 
   const intl = useIntl()
 
   const { run } = useDebounceFn(
     () => {
       const data: Record<string, any> = {
-        plan_change_enable: planChangeEnableRef.current?.ariaChecked === 'true' ? 1 : 0,
+        plan_change_enable: Boolean(switchPlanChangeEnable).valueOf() ? 1 : 0,
         reset_traffic_method: Number(resetTrafficMethodRef.current?.value).valueOf(),
-        surplus_enable: surplusEnableRef.current?.ariaChecked === 'true' ? 1 : 0,
+        surplus_enable: Boolean(switchSurplusEnable).valueOf() ? 1 : 0,
         new_order_event_id: Number(newOrderEventIDRef.current?.value).valueOf(),
         renew_order_event_id: Number(renewOrderEventIDRef.current?.value).valueOf(),
         change_order_event_id: Number(changeOrderEventIDRef.current?.value).valueOf(),
@@ -66,9 +66,11 @@ const FormSubscribe: FC<Partial<formSubscribeProps>> = (props) => {
           </div>
           <div className="col-lg-6 text-right">
             <Switch
-              defaultChecked={planChangeEnable}
-              onChange={changeHandler}
-              ref={planChangeEnableRef}
+              defaultChecked={switchPlanChangeEnable}
+              onChange={(checked: boolean) => {
+                setSwitchPlanChangeEnable(checked)
+                changeHandler()
+              }}
             />
           </div>
         </div>
@@ -117,9 +119,11 @@ const FormSubscribe: FC<Partial<formSubscribeProps>> = (props) => {
           </div>
           <div className="col-lg-6 text-right">
             <Switch
-              defaultChecked={surplusEnable}
-              onChange={changeHandler}
-              ref={surplusEnableRef}
+              defaultChecked={switchSurplusEnable}
+              onChange={(checked: boolean) => {
+                setSwitchSurplusEnable(checked)
+                changeHandler()
+              }}
             />
           </div>
         </div>

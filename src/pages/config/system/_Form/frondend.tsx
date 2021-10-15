@@ -30,12 +30,13 @@ const FormFrontend: FC<Partial<FormFrontendProps>> = (props) => {
     onChange,
   } = props
   const frontendAdminPathRef = useRef<HTMLInputElement>(null)
-  const frontendThemeSidebarRef = useRef<HTMLButtonElement>(null)
-  const frontendThemeHeaderRef = useRef<HTMLButtonElement>(null)
+  // const frontendThemeHeaderRef = useRef<HTMLButtonElement>(null)
   const frontendThemeColorRef = useRef<HTMLSelectElement>(null)
   const frontendBackgroundUrlRef = useRef<HTMLInputElement>(null)
   const frontendCustomerServiceMethodRef = useRef<HTMLSelectElement>(null)
   const frontendCustomerServiceIDRef = useRef<HTMLInputElement>(null)
+  const [switchFrontendThemeSidebar, setSwitchFrontendThemeSidebar] = useState(frontendThemeSidebar)
+  const [switchFrontendThemeHeader, setSwitchFrontendThemeHeader] = useState(frontendThemeHeader)
   const [displayCustomerServiceID, setDisplayCustomerServiceID] = useState<boolean>(
     frontendCustomerServiceMethod !== '0',
   )
@@ -44,10 +45,8 @@ const FormFrontend: FC<Partial<FormFrontendProps>> = (props) => {
     () => {
       const data: Record<string, any> = {
         frontend_admin_path: frontendAdminPathRef.current?.value,
-        frontend_theme_sidebar:
-          frontendThemeSidebarRef.current?.ariaChecked === 'true' ? 'light' : 'dark',
-        frontend_theme_header:
-          frontendThemeHeaderRef.current?.ariaChecked === 'true' ? 'light' : 'dark',
+        frontend_theme_sidebar: Boolean(switchFrontendThemeSidebar) ? 'light' : 'dark',
+        frontend_theme_header: Boolean(switchFrontendThemeHeader) ? 'light' : 'dark',
         frontend_theme_color: frontendThemeColorRef.current?.value,
         frontend_background_url: frontendBackgroundUrlRef.current?.value,
         frontend_customer_service_method: frontendCustomerServiceMethodRef.current?.value,
@@ -132,9 +131,11 @@ const FormFrontend: FC<Partial<FormFrontendProps>> = (props) => {
             <Switch
               checkedChildren={intl.formatMessage({ id: 'module.config.system.frondend.light' })}
               unCheckedChildren={intl.formatMessage({ id: 'module.config.system.frondend.dark' })}
-              defaultChecked={frontendThemeSidebar}
-              onChange={changeHandler}
-              ref={frontendThemeSidebarRef}
+              defaultChecked={switchFrontendThemeSidebar}
+              onChange={(checked) => {
+                setSwitchFrontendThemeSidebar(checked)
+                changeHandler()
+              }}
             />
           </div>
         </div>
@@ -149,9 +150,11 @@ const FormFrontend: FC<Partial<FormFrontendProps>> = (props) => {
             <Switch
               checkedChildren={intl.formatMessage({ id: 'module.config.system.frondend.light' })}
               unCheckedChildren={intl.formatMessage({ id: 'module.config.system.frondend.dark' })}
-              defaultChecked={frontendThemeHeader}
-              onChange={changeHandler}
-              ref={frontendThemeHeaderRef}
+              defaultChecked={switchFrontendThemeHeader}
+              onChange={(checked) => {
+                setSwitchFrontendThemeHeader(checked)
+                changeHandler()
+              }}
             />
           </div>
         </div>

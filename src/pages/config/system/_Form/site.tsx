@@ -55,16 +55,18 @@ const FormSite: FC<Partial<formSiteProps>> = (props) => {
   const appUrlRef = useRef<HTMLInputElement>(null)
   const subscribeUrlRef = useRef<HTMLTextAreaElement>(null)
   const tosUrlRef = useRef<HTMLInputElement>(null)
-  const safeModeEnableRef = useRef<HTMLButtonElement>(null)
-  const stopRegisterRef = useRef<HTMLButtonElement>(null)
-  const emailVerifyRef = useRef<HTMLButtonElement>(null)
-  const emailGmailLimitEnableRef = useRef<HTMLButtonElement>(null)
   const tryOutPlanIDRef = useRef<HTMLSelectElement>(null)
-  const emailWhiteListEnableRef = useRef<HTMLButtonElement>(null)
   const emailWhiteListSuffixRef = useRef<HTMLTextAreaElement>(null)
-  const recaptchaEnableRef = useRef<HTMLInputElement>(null)
+  // const recaptchaEnableRef = useRef<HTMLInputElement>(null)
   const recaptchaKeyRef = useRef<HTMLInputElement>(null)
   const recaptchaSiteKeyRef = useRef<HTMLInputElement>(null)
+  const [switchSafeModeEnable, setSwitchSafeModelEnable] = useState(safeModeEnable)
+  const [switchStopRegister, setSwitchStopRegister] = useState(stopRegister)
+  const [switchEmailVerify, setSwitchEmailVerify] = useState(emailVerify)
+  const [switchEmailGmailLimitEnable, setSwitchEmailGmailLimitEanbel] =
+    useState(emailGmailLimitEnable)
+  const [switchEmailWhiteListEnable, setSwitchEmailWhiteListEnable] = useState(emailWhiteListEnable)
+  const [switchRecaptchaEnable, setSwitchRecaptchaEnable] = useState(recaptchaEnable)
 
   const [displayEmailSuffix, setDisplayEmailSuffix] = useState<boolean>(
     emailWhiteListEnable as boolean,
@@ -82,14 +84,14 @@ const FormSite: FC<Partial<formSiteProps>> = (props) => {
         app_url: appUrlRef.current?.value,
         subscribe_url: subscribeUrlRef.current?.value,
         tos_url: tosUrlRef.current?.value,
-        safe_mode_enable: safeModeEnableRef.current?.ariaChecked === 'true' ? 1 : 0,
-        stop_register: stopRegisterRef.current?.ariaChecked === 'true' ? 1 : 0,
-        email_verify: emailVerifyRef.current?.ariaChecked === 'true' ? 1 : 0,
-        email_gmail_limit_enable: emailGmailLimitEnableRef.current?.ariaChecked === 'true' ? 1 : 0,
+        safe_mode_enable: Boolean(switchSafeModeEnable).valueOf() ? 1 : 0,
+        stop_register: Boolean(switchStopRegister).valueOf() ? 1 : 0,
+        email_verify: Boolean(switchEmailVerify).valueOf() ? 1 : 0,
+        email_gmail_limit_enable: Boolean(switchEmailGmailLimitEnable) ? 1 : 0,
         try_out_plan_id: Number(tryOutPlanIDRef.current?.value).valueOf(),
-        email_whitelist_enable: emailWhiteListEnableRef.current?.ariaChecked === 'true' ? 1 : 0,
+        email_whitelist_enable: Boolean(switchEmailWhiteListEnable).valueOf() ? 1 : 0,
         email_whitelist_suffix: emailWhiteListSuffixRef.current?.value.split(','),
-        recaptcha_enable: recaptchaEnableRef.current?.ariaChecked === 'true' ? 1 : 0,
+        recaptcha_enable: Boolean(switchRecaptchaEnable).valueOf() ? 1 : 0,
         recaptcha_key: recaptchaKeyRef.current?.value,
         recaptcha_site_key: recaptchaSiteKeyRef.current?.value,
       }
@@ -237,9 +239,11 @@ const FormSite: FC<Partial<formSiteProps>> = (props) => {
           </div>
           <div className="col-lg-6 text-right">
             <Switch
-              defaultChecked={safeModeEnable}
-              ref={safeModeEnableRef}
-              onChange={changeHandler}
+              defaultChecked={switchSafeModeEnable}
+              onChange={(checked: boolean) => {
+                setSwitchSafeModelEnable(checked)
+                changeHandler()
+              }}
             />
           </div>
         </div>
@@ -253,7 +257,13 @@ const FormSite: FC<Partial<formSiteProps>> = (props) => {
             </div>
           </div>
           <div className="col-lg-6 text-right">
-            <Switch defaultChecked={stopRegister} ref={stopRegisterRef} onChange={changeHandler} />
+            <Switch
+              defaultChecked={switchStopRegister}
+              onChange={(checked: boolean) => {
+                setSwitchStopRegister(checked)
+                changeHandler()
+              }}
+            />
           </div>
         </div>
         <div className="row p-4 border-bottom">
@@ -266,7 +276,13 @@ const FormSite: FC<Partial<formSiteProps>> = (props) => {
             </div>
           </div>
           <div className="col-lg-6 text-right">
-            <Switch defaultChecked={emailVerify} ref={emailVerifyRef} onChange={changeHandler} />
+            <Switch
+              defaultChecked={switchEmailVerify}
+              onChange={(checked: boolean) => {
+                setSwitchEmailVerify(checked)
+                changeHandler()
+              }}
+            />
           </div>
         </div>
         <div className="row p-4 border-bottom">
@@ -280,9 +296,11 @@ const FormSite: FC<Partial<formSiteProps>> = (props) => {
           </div>
           <div className="col-lg-6 text-right">
             <Switch
-              defaultChecked={emailGmailLimitEnable}
-              ref={emailGmailLimitEnableRef}
-              onChange={changeHandler}
+              defaultChecked={switchEmailGmailLimitEnable}
+              onChange={(checked: boolean) => {
+                setSwitchEmailGmailLimitEanbel(checked)
+                changeHandler()
+              }}
             />
           </div>
         </div>
@@ -327,9 +345,11 @@ const FormSite: FC<Partial<formSiteProps>> = (props) => {
           </div>
           <div className="col-lg-6 text-right">
             <Switch
-              defaultChecked={emailWhiteListEnable}
-              onChange={changeHandler}
-              ref={emailWhiteListEnableRef}
+              defaultChecked={switchEmailWhiteListEnable}
+              onChange={(checked: boolean) => {
+                setSwitchEmailWhiteListEnable(checked)
+                changeHandler()
+              }}
             />
           </div>
         </div>
@@ -370,9 +390,11 @@ const FormSite: FC<Partial<formSiteProps>> = (props) => {
           </div>
           <div className="col-lg-6 text-right">
             <Switch
-              defaultChecked={recaptchaEnable}
-              onChange={changeHandler}
-              ref={recaptchaEnableRef}
+              defaultChecked={switchRecaptchaEnable}
+              onChange={(checked: boolean) => {
+                setSwitchRecaptchaEnable(checked)
+                changeHandler()
+              }}
             />
           </div>
         </div>

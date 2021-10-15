@@ -1,4 +1,5 @@
 import type { FC } from 'react'
+import { useState } from 'react'
 import { useIntl } from 'umi'
 import { Switch } from 'antd'
 import { useDebounceFn } from 'ahooks'
@@ -32,29 +33,31 @@ const FormInvite: FC<Partial<formInviteProps>> = (props) => {
     onChange,
   } = props
 
-  const inviteForceRef = useRef<HTMLButtonElement>(null)
   const inviteCommissionRef = useRef<HTMLInputElement>(null)
   const inviteGenLimitRef = useRef<HTMLInputElement>(null)
-  const inviteNeverExpireRef = useRef<HTMLButtonElement>(null)
-  const commissionFirstTimeEnableRef = useRef<HTMLButtonElement>(null)
-  const commissionAutoCheckEnableRef = useRef<HTMLButtonElement>(null)
   const commissionWithdrawLimitRef = useRef<HTMLInputElement>(null)
   const commissionWithdrawMethodRef = useRef<HTMLTextAreaElement>(null)
-  const withdrawCloseEnableRef = useRef<HTMLButtonElement>(null)
+
+  const [switchInviteForce, setSwitchInviteForce] = useState(inviteForce)
+  const [switchInviteNeverExpire, setSwitchInviteNeverExpire] = useState(inviteNeverExpire)
+  const [switchCommissionFirstTimeEnable, setSwitchCommissionFirstTimeEnable] =
+    useState(commissionFirstTimeEnable)
+  const [switchCommissionAutoCheckEnable, setSwitchcommissionAutoCheckEnable] =
+    useState(commissionAutoCheckEnable)
+  const [switchWithdrawCloseEnable, setSwitchWithdrawCloseEnable] = useState(withdrawCloseEnable)
+
   const { run } = useDebounceFn(
     () => {
       const data: Record<string, any> = {
-        invite_force: inviteForceRef.current?.ariaChecked === 'true' ? 1 : 0,
+        invite_force: Boolean(switchInviteForce).valueOf() ? 1 : 0,
         invite_commission: Number(inviteCommissionRef.current?.value).valueOf(),
         invite_gen_limit: Number(inviteGenLimitRef.current?.value).valueOf(),
-        invite_never_expire: inviteNeverExpireRef.current?.ariaChecked === 'true' ? 1 : 0,
-        commission_first_time_enable:
-          commissionFirstTimeEnableRef.current?.ariaChecked === 'true' ? 1 : 0,
-        commission_auto_check_enable:
-          commissionAutoCheckEnableRef.current?.ariaChecked === 'true' ? 1 : 0,
+        invite_never_expire: Boolean(switchInviteNeverExpire).valueOf() ? 1 : 0,
+        commission_first_time_enable: Boolean(switchCommissionFirstTimeEnable).valueOf() ? 1 : 0,
+        commission_auto_check_enable: Boolean(switchCommissionAutoCheckEnable).valueOf() ? 1 : 0,
         commission_withdraw_limit: Number(commissionWithdrawLimitRef.current?.value).valueOf(),
         commission_withdraw_method: commissionWithdrawMethodRef.current?.value.split(','),
-        withdraw_close_enable: withdrawCloseEnableRef.current?.ariaChecked === 'true' ? 1 : 0,
+        withdraw_close_enable: Boolean(switchWithdrawCloseEnable).valueOf() ? 1 : 0,
       }
       onChange?.(data)
     },
@@ -76,7 +79,13 @@ const FormInvite: FC<Partial<formInviteProps>> = (props) => {
             </div>
           </div>
           <div className="col-lg-6 text-right">
-            <Switch defaultChecked={inviteForce} ref={inviteForceRef} onChange={changeHandler} />
+            <Switch
+              defaultChecked={switchInviteForce}
+              onChange={(checked: boolean) => {
+                setSwitchInviteForce(checked)
+                changeHandler()
+              }}
+            />
           </div>
         </div>
         <div className="row p-4 border-bottom">
@@ -132,9 +141,11 @@ const FormInvite: FC<Partial<formInviteProps>> = (props) => {
           </div>
           <div className="col-lg-6 text-right">
             <Switch
-              defaultChecked={inviteNeverExpire}
-              ref={inviteNeverExpireRef}
-              onChange={changeHandler}
+              defaultChecked={switchInviteNeverExpire}
+              onChange={(checked: boolean) => {
+                setSwitchInviteNeverExpire(checked)
+                changeHandler()
+              }}
             />
           </div>
         </div>
@@ -153,9 +164,11 @@ const FormInvite: FC<Partial<formInviteProps>> = (props) => {
           </div>
           <div className="col-lg-6 text-right">
             <Switch
-              defaultChecked={commissionFirstTimeEnable}
-              ref={commissionFirstTimeEnableRef}
-              onChange={changeHandler}
+              defaultChecked={switchCommissionFirstTimeEnable}
+              onChange={(checked: boolean) => {
+                setSwitchCommissionFirstTimeEnable(checked)
+                changeHandler()
+              }}
             />
           </div>
         </div>
@@ -174,9 +187,11 @@ const FormInvite: FC<Partial<formInviteProps>> = (props) => {
           </div>
           <div className="col-lg-6 text-right">
             <Switch
-              defaultChecked={commissionAutoCheckEnable}
-              ref={commissionAutoCheckEnableRef}
-              onChange={changeHandler}
+              defaultChecked={switchCommissionAutoCheckEnable}
+              onChange={(checked: boolean) => {
+                setSwitchcommissionAutoCheckEnable(checked)
+                changeHandler()
+              }}
             />
           </div>
         </div>
@@ -247,9 +262,11 @@ const FormInvite: FC<Partial<formInviteProps>> = (props) => {
           </div>
           <div className="col-lg-6 text-right">
             <Switch
-              defaultChecked={withdrawCloseEnable}
-              onChange={changeHandler}
-              ref={withdrawCloseEnableRef}
+              defaultChecked={switchWithdrawCloseEnable}
+              onChange={(checked: boolean) => {
+                setSwitchWithdrawCloseEnable(checked)
+                changeHandler()
+              }}
             />
           </div>
         </div>

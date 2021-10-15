@@ -14,15 +14,15 @@ export interface formTelegramProps {
 
 const FormTelegram: FC<Partial<formTelegramProps>> = (props) => {
   const { telegramBotEnable, telegramBotToken, onChange } = props
-  const telegramBotEnableRef = useRef<HTMLButtonElement>(null)
   const telegramBotTokenRef = useRef<HTMLInputElement>(null)
+  const [switchTelegramBotEnable, setSwitchTelegramBotEnable] = useState(telegramBotEnable)
   const [hookLoading, sethookLoading] = useState(false)
   const intl = useIntl()
 
   const { run } = useDebounceFn(
     () => {
       const data: Record<string, any> = {
-        telegram_bot_enable: telegramBotEnableRef.current?.ariaChecked === 'true' ? 1 : 0,
+        telegram_bot_enable: Boolean(switchTelegramBotEnable).valueOf() ? 1 : 0,
         telegram_bot_token: telegramBotTokenRef.current?.value,
       }
       onChange?.(data)
@@ -103,9 +103,11 @@ const FormTelegram: FC<Partial<formTelegramProps>> = (props) => {
           </div>
           <div className="col-lg-6 text-right">
             <Switch
-              defaultChecked={telegramBotEnable}
-              onChange={changeHandler}
-              ref={telegramBotEnableRef}
+              defaultChecked={switchTelegramBotEnable}
+              onChange={(checkd: boolean) => {
+                setSwitchTelegramBotEnable(checkd)
+                changeHandler()
+              }}
             />
           </div>
         </div>
