@@ -67,6 +67,9 @@ export default {
   'module.config.system.site.email_gmail_limit_enable': '禁止使用Gmail多别名',
   'module.config.system.site.email_gmail_limit_enable.tip': '开启后Gmail多别名将无法注册。',
   'module.config.system.site.try_out_plan_id': '注册试用',
+  'module.config.system.site.try_out_hour': '试用时间(小时)',
+  'module.config.system.site.try_out_hour.tip': '试用时间为0, 表示不予限制',
+  'module.config.system.site.try_out_hour.placeholde': '请输入',
   'module.config.system.site.try_out_plan_id.tip':
     '选择需要试用的订阅，如果没有选项请先前往订阅管理添加。',
   'module.config.system.site.try_out_plan_id.tip.placeholder': '请选择试用订阅',

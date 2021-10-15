@@ -20,6 +20,7 @@ export interface formSiteProps {
   emailVerify: boolean
   emailGmailLimitEnable: boolean
   tryOutPlanID: number
+  tryOutHour: number
   planItems: planItem[]
   emailWhiteListEnable: boolean
   emailWhiteListSuffix: string[]
@@ -41,6 +42,7 @@ const FormSite: FC<Partial<formSiteProps>> = (props) => {
     emailVerify,
     emailGmailLimitEnable,
     tryOutPlanID,
+    tryOutHour,
     planItems,
     emailWhiteListEnable,
     emailWhiteListSuffix,
@@ -56,8 +58,8 @@ const FormSite: FC<Partial<formSiteProps>> = (props) => {
   const subscribeUrlRef = useRef<HTMLTextAreaElement>(null)
   const tosUrlRef = useRef<HTMLInputElement>(null)
   const tryOutPlanIDRef = useRef<HTMLSelectElement>(null)
+  const tryOutHourRef = useRef<HTMLInputElement>(null)
   const emailWhiteListSuffixRef = useRef<HTMLTextAreaElement>(null)
-  // const recaptchaEnableRef = useRef<HTMLInputElement>(null)
   const recaptchaKeyRef = useRef<HTMLInputElement>(null)
   const recaptchaSiteKeyRef = useRef<HTMLInputElement>(null)
   const [switchSafeModeEnable, setSwitchSafeModelEnable] = useState(safeModeEnable)
@@ -74,6 +76,10 @@ const FormSite: FC<Partial<formSiteProps>> = (props) => {
   const [displayRecaptchaExtra, setDisplayRecaptchaExtra] = useState<boolean>(
     recaptchaEnable as boolean,
   )
+
+  const [displayTryOutHour, setDisplayTryOutHour] = useState<boolean>(
+    Boolean(tryOutPlanID).valueOf(),
+  )
   const intl = useIntl()
 
   const { run } = useDebounceFn(
@@ -89,6 +95,7 @@ const FormSite: FC<Partial<formSiteProps>> = (props) => {
         email_verify: Boolean(switchEmailVerify).valueOf() ? 1 : 0,
         email_gmail_limit_enable: Boolean(switchEmailGmailLimitEnable) ? 1 : 0,
         try_out_plan_id: Number(tryOutPlanIDRef.current?.value).valueOf(),
+        try_out_hour: Number(tryOutHourRef.current?.value).valueOf(),
         email_whitelist_enable: Boolean(switchEmailWhiteListEnable).valueOf() ? 1 : 0,
         email_whitelist_suffix: emailWhiteListSuffixRef.current?.value.split(','),
         recaptcha_enable: Boolean(switchRecaptchaEnable).valueOf() ? 1 : 0,
@@ -106,6 +113,12 @@ const FormSite: FC<Partial<formSiteProps>> = (props) => {
         setDisplayRecaptchaExtra(true)
       } else {
         setDisplayRecaptchaExtra(false)
+      }
+
+      if (data.try_out_plan_id > 0) {
+        setDisplayTryOutHour(true)
+      } else {
+        setDisplayTryOutHour(false)
       }
 
       onChange?.(data)
@@ -332,6 +345,31 @@ const FormSite: FC<Partial<formSiteProps>> = (props) => {
                 )
               })}
             </select>
+          </div>
+        </div>
+        <div
+          className="row p-4 border-bottom v2board-config-children"
+          style={displayTryOutHour ? {} : { display: 'none' }}
+        >
+          <div className="col-lg-6">
+            <div className="font-weight-bold my-1">
+              {intl.formatMessage({ id: 'module.config.system.site.try_out_hour' })}
+            </div>
+            <div className="font-size-sm my-1">
+              {intl.formatMessage({ id: 'module.config.system.site.try_out_hour.tip' })}
+            </div>
+          </div>
+          <div className="col-lg-6 text-right">
+            <input
+              type="number"
+              className="form-control"
+              placeholder={intl.formatMessage({
+                id: 'module.config.system.site.try_out_hour.placeholder',
+              })}
+              defaultValue={tryOutHour}
+              ref={tryOutHourRef}
+              onChange={changeHandler}
+            />
           </div>
         </div>
         <div className="row p-4 border-bottom row">

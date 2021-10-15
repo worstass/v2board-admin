@@ -75,6 +75,7 @@ const ConfigSystemPage: FC = () => {
         emailVerify: Boolean(configsResult.data.site.email_verify).valueOf(),
         emailGmailLimitEnable: Boolean(configsResult.data.site.email_gmail_limit_enable).valueOf(),
         tryOutPlanID: configsResult.data.site.try_out_plan_id,
+        tryOutHour: configsResult.data.site.try_out_hour,
         planItems: plansResult.data,
         emailWhiteListEnable: Boolean(configsResult.data.site.email_whitelist_enable),
         emailWhiteListSuffix: configsResult.data.site.email_whitelist_suffix,
