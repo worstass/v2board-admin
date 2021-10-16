@@ -117,9 +117,6 @@ declare namespace API {
           plan_change_enable: number
           reset_traffic_method: number
           surplus_enable: number
-          new_order_event_id: number
-          renew_order_event_id: number
-          change_order_event_id: number
         }
         frontend: {
           frontend_theme_sidebar: string

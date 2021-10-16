@@ -89,9 +89,6 @@ const ConfigSystemPage: FC = () => {
         planChangeEnable: Boolean(configsResult.data.subscribe.plan_change_enable).valueOf(),
         resetTrafficMethod: configsResult.data.subscribe.reset_traffic_method,
         surplusEnable: Boolean(configsResult.data.subscribe.surplus_enable).valueOf(),
-        newOrderEventID: configsResult.data.subscribe.new_order_event_id,
-        renewOrderEventID: configsResult.data.subscribe.renew_order_event_id,
-        changeOrderEventID: configsResult.data.subscribe.change_order_event_id,
         onChange: saveHandler,
       })
 

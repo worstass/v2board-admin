@@ -8,27 +8,13 @@ export interface formSubscribeProps {
   planChangeEnable: boolean
   resetTrafficMethod: number
   surplusEnable: boolean
-  newOrderEventID: number
-  renewOrderEventID: number
-  changeOrderEventID: number
   onChange: (data: Record<string, any>) => void
 }
 
 const FormSubscribe: FC<Partial<formSubscribeProps>> = (props) => {
-  const {
-    planChangeEnable,
-    resetTrafficMethod,
-    surplusEnable,
-    newOrderEventID,
-    renewOrderEventID,
-    changeOrderEventID,
-    onChange,
-  } = props
+  const { planChangeEnable, resetTrafficMethod, surplusEnable, onChange } = props
 
   const resetTrafficMethodRef = useRef<HTMLSelectElement>(null)
-  const newOrderEventIDRef = useRef<HTMLSelectElement>(null)
-  const renewOrderEventIDRef = useRef<HTMLSelectElement>(null)
-  const changeOrderEventIDRef = useRef<HTMLSelectElement>(null)
   const [switchPlanChangeEnable, setSwitchPlanChangeEnable] = useState(planChangeEnable)
   const [switchSurplusEnable, setSwitchSurplusEnable] = useState(surplusEnable)
 
@@ -40,11 +26,7 @@ const FormSubscribe: FC<Partial<formSubscribeProps>> = (props) => {
         plan_change_enable: Boolean(switchPlanChangeEnable).valueOf() ? 1 : 0,
         reset_traffic_method: Number(resetTrafficMethodRef.current?.value).valueOf(),
         surplus_enable: Boolean(switchSurplusEnable).valueOf() ? 1 : 0,
-        new_order_event_id: Number(newOrderEventIDRef.current?.value).valueOf(),
-        renew_order_event_id: Number(renewOrderEventIDRef.current?.value).valueOf(),
-        change_order_event_id: Number(changeOrderEventIDRef.current?.value).valueOf(),
       }
-
       onChange?.(data)
     },
     { wait: 1000 },
@@ -125,106 +107,6 @@ const FormSubscribe: FC<Partial<formSubscribeProps>> = (props) => {
                 changeHandler()
               }}
             />
-          </div>
-        </div>
-        <div className="row p-4 border-bottom">
-          <div className="col-lg-6">
-            <div className="font-weight-bold my-1">
-              {intl.formatMessage({ id: 'module.config.system.subscribe.new_order_event_id' })}
-            </div>
-            <div className="font-size-sm my-1">
-              {intl.formatMessage({ id: 'module.config.system.subscribe.new_order_event_id.tip' })}
-            </div>
-          </div>
-          <div className="col-lg-6 text-right">
-            <select
-              className="form-control"
-              placeholder={intl.formatMessage({
-                id: 'module.config.system.subscribe.new_order_event_id.placeholder',
-              })}
-              defaultValue={newOrderEventID}
-              onChange={changeHandler}
-              ref={newOrderEventIDRef}
-            >
-              <option value={0}>
-                {intl.formatMessage({
-                  id: 'module.config.system.subscribe.new_order_event_id.option.do_nothing',
-                })}
-              </option>
-              <option value={1}>
-                {intl.formatMessage({
-                  id: 'module.config.system.subscribe.new_order_event_id.option.reset_traffic',
-                })}
-              </option>
-            </select>
-          </div>
-        </div>
-        <div className="row p-4 border-bottom">
-          <div className="col-lg-6">
-            <div className="font-weight-bold my-1">
-              {intl.formatMessage({ id: 'module.config.system.subscribe.renew_order_event_id' })}
-            </div>
-            <div className="font-size-sm my-1">
-              {intl.formatMessage({
-                id: 'module.config.system.subscribe.renew_order_event_id.tip',
-              })}
-            </div>
-          </div>
-          <div className="col-lg-6 text-right">
-            <select
-              className="form-control"
-              placeholder={intl.formatMessage({
-                id: 'module.config.system.subscribe.renew_order_event_id.placeholder',
-              })}
-              defaultValue={renewOrderEventID}
-              onChange={changeHandler}
-              ref={renewOrderEventIDRef}
-            >
-              <option value={0}>
-                {intl.formatMessage({
-                  id: 'module.config.system.subscribe.renew_order_event_id.option.do_nothing',
-                })}
-              </option>
-              <option value={1}>
-                {intl.formatMessage({
-                  id: 'module.config.system.subscribe.renew_order_event_id.option.reset_traffic',
-                })}
-              </option>
-            </select>
-          </div>
-        </div>
-        <div className="row p-4 border-bottom">
-          <div className="col-lg-6">
-            <div className="font-weight-bold my-1">
-              {intl.formatMessage({ id: 'module.config.system.subscribe.change_order_event_id' })}
-            </div>
-            <div className="font-size-sm my-1">
-              {intl.formatMessage({
-                id: 'module.config.system.subscribe.change_order_event_id.tip',
-              })}
-            </div>
-          </div>
-          <div className="col-lg-6 text-right">
-            <select
-              className="form-control"
-              placeholder={intl.formatMessage({
-                id: 'module.config.system.subscribe.change_order_event_id.placeholder',
-              })}
-              defaultValue={changeOrderEventID}
-              onChange={changeHandler}
-              ref={changeOrderEventIDRef}
-            >
-              <option value={0}>
-                {intl.formatMessage({
-                  id: 'module.config.system.subscribe.change_order_event_id.option.do_nothing',
-                })}
-              </option>
-              <option value={1}>
-                {intl.formatMessage({
-                  id: 'module.config.system.subscribe.change_order_event_id.option.reset_traffic',
-                })}
-              </option>
-            </select>
           </div>
         </div>
       </div>
