@@ -646,7 +646,7 @@ export default {
   'module.order.list.column.type.new_order': '新购',
   'module.order.list.column.type.renew': '续费',
   'module.order.list.column.type.upgrade': '升级',
-  'module.order.list.column.type.reset_price ': '重置',
+  'module.order.list.column.type.reset_price': '重置',
   'module.order.list.column.plan_id': '订阅计划',
   'module.order.list.column.cycle': '周期',
   'module.order.list.column.cycle.month_price': '月付',
