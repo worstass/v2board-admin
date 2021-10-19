@@ -4,7 +4,7 @@ import { useIntl, Link } from 'umi'
 import React, { useState } from 'react'
 import moment from 'moment'
 import { noticeDrop } from '@/services'
-import ModalNotice from '../_Modal'
+import DrawerNotice from '../_Drawer'
 
 const { Column } = Table
 
@@ -16,7 +16,7 @@ export interface listProps {
 
 const List: FC<listProps> = (props) => {
   const { dataSource, onDropSuccess, onEditSuccess } = props
-  const [modalNoticeVisible, setModalNoticeVisible] = useState(false)
+  const [drawerNoticeVisible, setDrawerNoticeVisible] = useState(false)
   const [editNotice, setEditNotice] = useState<API.Admin.NoticeItem>()
   const intl = useIntl()
 
@@ -69,7 +69,7 @@ const List: FC<listProps> = (props) => {
                 onClick={(e: React.MouseEvent) => {
                   e.preventDefault()
                   setEditNotice(record)
-                  setModalNoticeVisible(true)
+                  setDrawerNoticeVisible(true)
                 }}
               >
                 {intl.formatMessage({ id: 'module.notice.list.column.action.edit' })}
@@ -90,15 +90,15 @@ const List: FC<listProps> = (props) => {
         />
       </Table>
       {editNotice !== undefined && (
-        <ModalNotice
-          onCancel={() => {
-            setModalNoticeVisible(false)
+        <DrawerNotice
+          onClose={() => {
+            setDrawerNoticeVisible(false)
           }}
           onSubmitSuccess={() => {
-            setModalNoticeVisible(false)
+            setDrawerNoticeVisible(false)
             onEditSuccess()
           }}
-          visible={modalNoticeVisible}
+          visible={drawerNoticeVisible}
           defaultNotice={editNotice}
           key={editNotice.id}
         />

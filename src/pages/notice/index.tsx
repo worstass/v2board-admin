@@ -5,13 +5,15 @@ import { useState, useEffect } from 'react'
 import { PlusOutlined } from '@ant-design/icons'
 import List from './_List'
 import { notices } from '@/services'
-import ModalNotice from './_Modal'
+// import ModalNotice from './_Modal'
+import DrawerNotice from './_Drawer'
 
 const NoticePage: FC = () => {
   const intl = useIntl()
   const [adminNotices, setAdminNotices] = useState<API.Admin.NoticeItem[]>()
   const [listUpdateStatus, setListUpdateStatus] = useState(false)
-  const [modalNoticeVisible, setModalNoticeVisible] = useState(false)
+  // const [modalNoticeVisible, setModalNoticeVisible] = useState(false)
+  const [drawerNoticeVisible, setDrawerNoticeVisible] = useState(false)
 
   useEffect(() => {
     ;(async () => {
@@ -38,7 +40,7 @@ const NoticePage: FC = () => {
               <Button
                 onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                   e.preventDefault()
-                  setModalNoticeVisible(true)
+                  setDrawerNoticeVisible(true)
                 }}
               >
                 <PlusOutlined style={{ verticalAlign: '0.05rem' }} />
@@ -58,14 +60,14 @@ const NoticePage: FC = () => {
           />
         </div>
       </div>
-      <ModalNotice
-        visible={modalNoticeVisible}
-        onCancel={() => {
-          setModalNoticeVisible(false)
+      <DrawerNotice
+        visible={drawerNoticeVisible}
+        onClose={() => {
+          setDrawerNoticeVisible(false)
         }}
         onSubmitSuccess={() => {
           setListUpdateStatus(true)
-          setModalNoticeVisible(false)
+          setDrawerNoticeVisible(false)
         }}
       />
     </>
