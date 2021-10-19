@@ -63,7 +63,7 @@ const DrawerKnowledge: FC<drawerKnowledgeProps> = (props) => {
         width={'80%'}
         footer={
           <div className="float-right">
-            <Button type="default" className="mx-lg-2">
+            <Button type="default" className="mx-lg-2" onClick={onClose}>
               <span>{intl.formatMessage({ id: 'module.knowledge.drawer.cancel_btn' })}</span>
             </Button>
             <Button type="primary" onClick={submitHandler}>

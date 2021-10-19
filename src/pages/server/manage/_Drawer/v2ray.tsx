@@ -145,7 +145,7 @@ const DrawerV2ray: FC<drawerV2rayProps> = (props) => {
         width="500"
         footer={
           <div className="float-right">
-            <Button type="default" className="mx-lg-2">
+            <Button type="default" className="mx-lg-2" onClick={onClose}>
               <span>{intl.formatMessage({ id: 'module.server.manage.drawer.cancel_btn' })}</span>
             </Button>
             <Button type="primary" onClick={submitHandler}>
