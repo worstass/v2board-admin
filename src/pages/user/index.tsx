@@ -99,7 +99,7 @@ const UserPage: FC = () => {
               )
               downloadLink.setAttribute(
                 'download',
-                `users-${moment().format('YYYY-MM-DD HH:MM:SS')}`,
+                `users-${moment().format('YYYY-MM-DD HH:mm:ss')}`,
               )
               document.body.appendChild(downloadLink)
               downloadLink.click()

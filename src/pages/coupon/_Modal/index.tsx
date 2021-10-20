@@ -64,7 +64,7 @@ const ModalCoupon: FC<modalCouponProps> = (props) => {
         downloadLink.href = window.URL.createObjectURL(new Blob(binaryData, { type: 'text/csv' }))
         downloadLink.setAttribute(
           'download',
-          `coupons-generated-${moment().format('YYYY-MM-DD HH:MM:SS')}`,
+          `coupons-generated-${moment().format('YYYY-MM-DD HH:mm:ss')}`,
         )
         document.body.appendChild(downloadLink)
         downloadLink.click()

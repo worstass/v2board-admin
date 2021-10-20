@@ -181,7 +181,7 @@ const List: FC<listProps> = (props) => {
           key="updated_at"
           dataIndex="updated_at"
           render={(updatedAt: number) => {
-            return moment.unix(updatedAt).format('YYYY-MM-DD HH:MM')
+            return moment.unix(updatedAt).format('YYYY-MM-DD HH:mm')
           }}
         />
       </Table>

@@ -149,7 +149,7 @@ const TicketDetailPage: FC<IRouteComponentProps> = (props) => {
               return (
                 <div key={messageItem.id}>
                   <div className={divTimeClassNames(messageItem.is_me)}>
-                    {moment.unix(Number(messageItem.created_at)).format('YYYY-MM-DD HH:MM')}
+                    {moment.unix(Number(messageItem.created_at)).format('YYYY-MM-DD HH:mm')}
                   </div>
                   <div className={divMessageClassNames(messageItem.is_me)}>
                     <div className={messageClassNames(messageItem.is_me)}>

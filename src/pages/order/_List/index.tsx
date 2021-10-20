@@ -410,7 +410,7 @@ const List: FC<listProps> = (props) => {
           dataIndex="created_at"
           key="created_at"
           render={(createdAt: number) => {
-            return moment.unix(createdAt).format('YYYY/MM/DD HH:MM')
+            return moment.unix(createdAt).format('YYYY/MM/DD HH:mm')
           }}
           align="right"
         />

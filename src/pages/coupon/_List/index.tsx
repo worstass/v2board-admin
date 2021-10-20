@@ -106,9 +106,9 @@ const List: FC<listProps> = (props) => {
           dataIndex="valid_period"
           key="valid_period"
           render={(valid: string, record: API.Admin.CouponItem) => {
-            return `${moment.unix(record.started_at).format('YYYY/MM/DD HH:MM')} ~ ${moment
+            return `${moment.unix(record.started_at).format('YYYY/MM/DD HH:mm')} ~ ${moment
               .unix(record.ended_at)
-              .format('YYYY/MM/DD HH:MM')} `
+              .format('YYYY/MM/DD HH:mm')} `
           }}
           align="left"
         />

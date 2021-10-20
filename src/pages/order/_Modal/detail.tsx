@@ -159,7 +159,7 @@ const ModalDetail: FC<modalDetailProps> = (props) => {
             {intl.formatMessage({ id: 'module.order.modal.detail.created_at' })}
           </Col>
           <Col span="18" style={{ padding: '8px' }}>
-            {moment.unix(defaultOrder.created_at).format('YYYY-MM-DD HH:MM')}
+            {moment.unix(defaultOrder.created_at).format('YYYY-MM-DD HH:mm')}
           </Col>
         </Row>
         <Row style={{ margin: '-8px -8px 10px' }}>
@@ -167,7 +167,7 @@ const ModalDetail: FC<modalDetailProps> = (props) => {
             {intl.formatMessage({ id: 'module.order.modal.detail.updated_at' })}
           </Col>
           <Col span="18" style={{ padding: '8px' }}>
-            {moment.unix(defaultOrder.updated_at).format('YYYY-MM-DD HH:MM')}
+            {moment.unix(defaultOrder.updated_at).format('YYYY-MM-DD HH:mm')}
           </Col>
         </Row>
       </Modal>

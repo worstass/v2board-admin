@@ -56,7 +56,7 @@ const List: FC<listProps> = (props) => {
           key="created_at"
           align="center"
           render={(created_at: number) => {
-            return moment.unix(created_at).format('YYYY/MM/DD HH:MM')
+            return moment.unix(created_at).format('YYYY/MM/DD HH:mm')
           }}
         />
         <Column

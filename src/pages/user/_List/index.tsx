@@ -385,7 +385,7 @@ const List: FC<listProps> = (props) => {
                 >
                   {expiredAt === null
                     ? intl.formatMessage({ id: 'module.user.list.column.expired_at.nerver_expire' })
-                    : moment.unix(expiredAt).format('YYYY-MM-DD HH:MM')}
+                    : moment.unix(expiredAt).format('YYYY-MM-DD HH:mm')}
                 </Tag>
               </Space>
             )
@@ -398,7 +398,7 @@ const List: FC<listProps> = (props) => {
           sorter={true}
           showSorterTooltip={false}
           render={(created_at: number) => {
-            return moment.unix(created_at).format('YYYY-MM-DD HH:MM')
+            return moment.unix(created_at).format('YYYY-MM-DD HH:mm')
           }}
         />
       </Table>

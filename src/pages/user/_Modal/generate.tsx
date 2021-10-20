@@ -47,7 +47,7 @@ const ModalGenerate: FC<modalGenerateProps> = (props) => {
         downloadLink.href = window.URL.createObjectURL(new Blob(binaryData, { type: 'text/csv' }))
         downloadLink.setAttribute(
           'download',
-          `users-generated-${moment().format('YYYY-MM-DD HH:MM:SS')}`,
+          `users-generated-${moment().format('YYYY-MM-DD HH:mm:ss')}`,
         )
         document.body.appendChild(downloadLink)
         downloadLink.click()
