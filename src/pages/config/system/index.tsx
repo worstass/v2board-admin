@@ -89,6 +89,9 @@ const ConfigSystemPage: FC = () => {
         planChangeEnable: Boolean(configsResult.data.subscribe.plan_change_enable).valueOf(),
         resetTrafficMethod: configsResult.data.subscribe.reset_traffic_method,
         surplusEnable: Boolean(configsResult.data.subscribe.surplus_enable).valueOf(),
+        resetOnetimeTrafficEnable: Boolean(
+          configsResult.data.subscribe.reset_onetime_traffic_enable,
+        ).valueOf(),
         onChange: saveHandler,
       })
 

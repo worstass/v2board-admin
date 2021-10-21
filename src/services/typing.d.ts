@@ -117,6 +117,7 @@ declare namespace API {
           plan_change_enable: number
           reset_traffic_method: number
           surplus_enable: number
+          reset_onetime_traffic_enable: number
         }
         frontend: {
           frontend_theme_sidebar: string

@@ -100,6 +100,9 @@ export default {
   'module.config.system.subscribe.surplus_enable': '开启折抵方案',
   'module.config.system.subscribe.surplus_enable.tip':
     '开启后用户更换订阅将会由系统对原有订阅进行折抵，方案参考文档。',
+  'module.config.system.subscribe.reset_onetime_traffic_enable': '一次性流量重置',
+  'module.config.system.subscribe.reset_onetime_traffic_enable.tip':
+    '开启后用户续费一次性流量，流量将被重置，关闭则流量叠加',
   'module.config.system.invite': '邀请&佣金',
   'module.config.system.invite.invite_force': '开启强制邀请',
   'module.config.system.invite.invite_force.tip': '开启后只有被邀请的用户才可以进行注册。',
