@@ -104,7 +104,7 @@ const FormEmail: FC<Partial<formEmailProps>> = (props) => {
           </div>
           <div className="col-lg-6 text-right">
             <input
-              type="text"
+              type="number"
               className="form-control"
               placeholder={intl.formatMessage({
                 id: 'module.config.system.email.email_port.placeholder',

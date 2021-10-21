@@ -99,7 +99,7 @@ const FormInvite: FC<Partial<formInviteProps>> = (props) => {
           </div>
           <div className="col-lg-6 text-right">
             <input
-              type="text"
+              type="number"
               className="form-control"
               placeholder={intl.formatMessage({
                 id: 'module.config.system.invite.invite_commission.placeholder',
@@ -119,7 +119,7 @@ const FormInvite: FC<Partial<formInviteProps>> = (props) => {
           </div>
           <div className="col-lg-6 text-right">
             <input
-              type="text"
+              type="number"
               className="form-control"
               placeholder={intl.formatMessage({
                 id: 'module.config.system.invite.invite_gen_limit.placeholder',
@@ -210,7 +210,7 @@ const FormInvite: FC<Partial<formInviteProps>> = (props) => {
           </div>
           <div className="col-lg-6 text-right">
             <input
-              type="text"
+              type="number"
               className="form-control"
               placeholder={intl.formatMessage({
                 id: 'module.config.system.invite.commission_withdraw_limit.placeholder',
