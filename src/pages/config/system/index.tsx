@@ -100,11 +100,18 @@ const ConfigSystemPage: FC = () => {
         inviteCommission: configsResult.data.invite.invite_commission,
         inviteGenlLimit: configsResult.data.invite.invite_gen_limit,
         inviteNeverExpire: Boolean(Number(configsResult.data.invite.invite_never_expire).valueOf()),
+        planItems: plansResult.data,
         commissionFirstTimeEnable: Boolean(configsResult.data.invite.commission_first_time_enable),
         commissionWithdrawLimit: configsResult.data.invite.commission_withdraw_limit,
         commissionAutoCheckEnable: Boolean(configsResult.data.invite.commission_auto_check_enable),
         commissionWithdrawMethod: configsResult.data.invite.commission_withdraw_method,
         withdrawCloseEnable: Boolean(configsResult.data.invite.withdraw_close_enable),
+        freeSubscriptionPlanId: configsResult.data.invite.free_subscription_plan_id,
+        freeSubscriptionCycle: configsResult.data.invite.free_subscription_cycle,
+        freeSubscriptionLimit: configsResult.data.invite.free_subscription_limit,
+        freeSubscriptionRecoveryEnable: Boolean(
+          configsResult.data.invite.free_subscription_recovery_enable,
+        ),
         onChange: saveHandler,
       })
 

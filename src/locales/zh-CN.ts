@@ -128,6 +128,28 @@ export default {
   'module.config.system.invite.commission_withdraw_method.tip': '可以支持的提现方式。',
   'module.config.system.invite.commission_withdraw_method.placeholder':
     '请输入后缀域名，逗号分割 如：支付宝,USDT,贝宝',
+  'module.config.system.invite.free_subscription_plan_id': '赠送用户订阅计划',
+  'module.config.system.invite.free_subscription_plan_id.tip':
+    '邀请用户注册成功，邀请人将获得免费的订阅计划',
+  'module.config.system.invite.free_subscription_plan_id.placeholder': '请选择订阅计划',
+  'module.config.system.invite.free_subscription_plan_id.option.close': '关闭',
+  'module.config.system.invite.free_subscription_cycle': '赠送订阅计划的周期',
+  'module.config.system.invite.free_subscription_cycle.placeholder': '请选择订阅周期',
+  'module.config.system.invite.free_subscription_cycle.option.month_price': '一月',
+  'module.config.system.invite.free_subscription_cycle.option.quarter_price': '一季度',
+  'module.config.system.invite.free_subscription_cycle.option.half_year_price': '半年',
+  'module.config.system.invite.free_subscription_cycle.option.year_price': '一年',
+  'module.config.system.invite.free_subscription_cycle.option.two_year_price': '两年',
+  'module.config.system.invite.free_subscription_cycle.option.three_year_price': '三年',
+  'module.config.system.invite.free_subscription_cycle.option.onetime_price': '一次性',
+  'module.config.system.invite.free_subscription_cycle.option.reset_price': '重置包',
+  'module.config.system.invite.free_subscription_limit': '赠送用户计划的最大次数',
+  'module.config.system.invite.free_subscription_limit.tip': '超过限制将停止赠送',
+  'module.config.system.invite.free_subscription_limit.placeholder': '请输入',
+  'module.config.system.invite.free_subscription_recovery_enable':
+    '开启赠送用户计划限制次数的恢复机制',
+  'module.config.system.invite.free_subscription_recovery_enable.tip':
+    '当被邀请用户完成任意套餐购买时，将去除一次限制次数',
   'module.config.system.invite.withdraw_close_enable': '关闭提现',
   'module.config.system.invite.withdraw_close_enable.tip':
     '关闭后将禁止用户申请提现，且邀请佣金将会直接进入用户余额。',
