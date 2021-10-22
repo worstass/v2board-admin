@@ -1,4 +1,4 @@
-import type { FC, ChangeEvent } from 'react'
+import type { FC } from 'react'
 import { useIntl } from 'umi'
 import { Drawer, Input, message, Button } from 'antd'
 import { noticeSave } from '@/services'
@@ -7,7 +7,6 @@ import MarkdownIt from 'markdown-it'
 import MdEditor from 'react-markdown-editor-lite'
 import 'react-markdown-editor-lite/lib/index.css'
 
-const { TextArea } = Input
 const mdParser = new MarkdownIt({ html: true })
 
 export interface drawerNoticeProps {

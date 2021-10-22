@@ -1,7 +1,7 @@
 import type { FC } from 'react'
 import { useIntl, Link, useModel } from 'umi'
 import { Drawer, Input, Select, Space, Button, message, Tooltip } from 'antd'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import ModalGroup from '@/components/Modal/group'
 import { V2rayNodeSave } from '@/services'
 import { QuestionCircleOutlined, ReadOutlined } from '@ant-design/icons'
@@ -25,11 +25,11 @@ const DrawerV2ray: FC<drawerV2rayProps> = (props) => {
   const { onClose, visible, parentNodes, onSubmitSuccess, node } = props
   const { groupsState, refresh } = useModel('useGroupModel')
   const [modalGroupVisible, setModalGroupVisible] = useState(false)
-  const [tags, setTags] = useState<string[]>([])
-  const [groupIds, setGroupIds] = useState<number[]>([])
-  const [tls, setTLS] = useState<number>(0)
+  const [tags, setTags] = useState<string[] | undefined>(node?.tags)
+  const [groupIds, setGroupIds] = useState<number[] | undefined>(node?.group_id)
+  const [tls, setTLS] = useState<number | undefined>(node?.tls)
   const [network, setNetwork] = useState<string>('tcp')
-  const [parentID, setParentID] = useState<number>(0)
+  const [parentID, setParentID] = useState<number | undefined>(node?.parent_id)
   const [drawerTLSVisible, setDrawerTLSVisible] = useState<boolean>(false)
   const [drawerNetworkVisible, setDrawerNetworkVisible] = useState<boolean>(false)
   const [drawerRuleVisible, setDrawerRuleVisible] = useState<boolean>(false)
@@ -51,17 +51,6 @@ const DrawerV2ray: FC<drawerV2rayProps> = (props) => {
   const serverPortRef = useRef<Input>(null)
   const serverNameRef = useRef<Input>(null)
   const alterIDRef = useRef<Input>(null)
-
-  useEffect(() => {
-    if (node?.tags) {
-      setTags(node?.tags)
-    }
-
-    if (node?.group_id) {
-      setGroupIds(node?.group_id)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   const modalGroupCancelHandler = () => {
     setModalGroupVisible(false)
@@ -364,7 +353,17 @@ const DrawerV2ray: FC<drawerV2rayProps> = (props) => {
                 id: 'module.server.manage.parent_id.option.default',
               })}
             </Option>
-            {parentNodes &&
+            {node !== undefined &&
+              parentNodes
+                .filter((nodeItem) => nodeItem.id !== node?.id)
+                .map((nodeItem: API.Admin.NodeItem) => {
+                  return (
+                    <Option key={nodeItem.id} value={nodeItem.id}>
+                      {nodeItem.name}
+                    </Option>
+                  )
+                })}
+            {node === undefined &&
               parentNodes.map((nodeItem: API.Admin.NodeItem) => {
                 return (
                   <Option key={nodeItem.id} value={nodeItem.id}>
