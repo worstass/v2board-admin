@@ -1,7 +1,7 @@
 import type { FC } from 'react'
 import { useIntl, Link, useModel } from 'umi'
 import { Drawer, Input, Select, Space, Button, message } from 'antd'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import ModalGroup from '@/components/Modal/group'
 import { trojanNodeSave } from '@/services'
 import { QuestionCircleOutlined } from '@ant-design/icons'
@@ -22,10 +22,10 @@ const DrawerTrojan: FC<drawerTrojanProps> = (props) => {
   const { onClose, visible, parentNodes, onSubmitSuccess, node } = props
   const { groupsState, refresh } = useModel('useGroupModel')
   const [modalGroupVisible, setModalGroupVisible] = useState(false)
-  const [tags, setTags] = useState<string[]>([])
-  const [groupIds, setGroupIds] = useState<number[]>([])
+  const [tags, setTags] = useState<string[] | undefined>(node?.tags)
+  const [groupIds, setGroupIds] = useState<number[] | undefined>(node?.group_id)
   const [allowInsecure, setAllowInsecure] = useState<number>(0)
-  const [parentID, setParentID] = useState<number>(0)
+  const [parentID, setParentID] = useState<number | undefined>(node?.parent_id)
   const nameRef = useRef<Input>(null)
   const rateRef = useRef<Input>(null)
   const hostRef = useRef<Input>(null)
@@ -33,17 +33,6 @@ const DrawerTrojan: FC<drawerTrojanProps> = (props) => {
   const serverPortRef = useRef<Input>(null)
   const serverNameRef = useRef<Input>(null)
   const [destroy, setDestroy] = useState(false)
-
-  useEffect(() => {
-    if (node?.tags !== undefined) {
-      setTags(node?.tags)
-    }
-
-    if (node?.group_id !== undefined) {
-      setGroupIds(node?.group_id)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   const modalGroupCancelHandler = () => {
     setModalGroupVisible(false)
@@ -256,7 +245,7 @@ const DrawerTrojan: FC<drawerTrojanProps> = (props) => {
             placeholder={intl.formatMessage({
               id: 'module.server.manage.parent_id.placeholder',
             })}
-            defaultValue={node?.parent_id ?? 0}
+            defaultValue={parentID ?? 0}
             onChange={(value: number) => {
               setParentID(value)
             }}
@@ -266,7 +255,17 @@ const DrawerTrojan: FC<drawerTrojanProps> = (props) => {
                 id: 'module.server.manage.parent_id.option.default',
               })}
             </Option>
-            {parentNodes &&
+            {node !== undefined &&
+              parentNodes
+                .filter((nodeItem) => nodeItem.id !== node?.id)
+                .map((nodeItem: API.Admin.NodeItem) => {
+                  return (
+                    <Option key={nodeItem.id} value={nodeItem.id}>
+                      {nodeItem.name}
+                    </Option>
+                  )
+                })}
+            {node === undefined &&
               parentNodes.map((nodeItem: API.Admin.NodeItem) => {
                 return (
                   <Option key={nodeItem.id} value={nodeItem.id}>

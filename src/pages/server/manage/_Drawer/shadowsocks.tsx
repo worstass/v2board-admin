@@ -1,7 +1,7 @@
 import type { FC } from 'react'
 import { useIntl, Link, useModel } from 'umi'
 import { Drawer, Input, Select, Space, Button, message } from 'antd'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import ModalGroup from '@/components/Modal/group'
 import { ReadOutlined } from '@ant-design/icons'
 import { shodowsocksNodeSave } from '@/services'
@@ -21,27 +21,16 @@ const DrawerShadowsocks: FC<drawerShadowsocksProps> = (props) => {
   const { onClose, visible, parentNodes, onSubmitSuccess, node } = props
   const { groupsState, refresh } = useModel('useGroupModel')
   const [modalGroupVisible, setModalGroupVisible] = useState(false)
-  const [tags, setTags] = useState<string[]>()
-  const [groupIds, setGroupIds] = useState<number[]>([])
-  const [cipher, setCipher] = useState('chacha20-ietf-poly1305')
-  const [parentID, setParentID] = useState<number>(0)
+  const [tags, setTags] = useState<string[] | undefined>(node?.tags)
+  const [groupIds, setGroupIds] = useState<number[] | undefined>(node?.group_id)
+  const [cipher, setCipher] = useState(node?.cipher ?? 'chacha20-ietf-poly1305')
+  const [parentID, setParentID] = useState<number | undefined>(node?.parent_id)
   const nameRef = useRef<Input>(null)
   const rateRef = useRef<Input>(null)
   const hostRef = useRef<Input>(null)
   const portRef = useRef<Input>(null)
   const serverPortRef = useRef<Input>(null)
   const [destroy, setDestroy] = useState(false)
-
-  useEffect(() => {
-    if (node?.tags !== undefined) {
-      setTags(node?.tags)
-    }
-
-    if (node?.group_id !== undefined) {
-      setGroupIds(node?.group_id)
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   const modalGroupCancelHandler = () => {
     setModalGroupVisible(false)
@@ -203,7 +192,7 @@ const DrawerShadowsocks: FC<drawerShadowsocksProps> = (props) => {
             placeholder={intl.formatMessage({
               id: 'module.server.manage.shadowsocks.cipher.placeholder',
             })}
-            defaultValue={node?.cipher ?? 'chacha20-ietf-poly1305'}
+            defaultValue={cipher}
             onChange={(value: string) => {
               setCipher(value)
             }}
@@ -237,7 +226,7 @@ const DrawerShadowsocks: FC<drawerShadowsocksProps> = (props) => {
             placeholder={intl.formatMessage({
               id: 'module.server.manage.parent_id.placeholder',
             })}
-            defaultValue={node?.parent_id ?? 0}
+            defaultValue={parentID ?? 0}
             onChange={(value: number) => {
               setParentID(value)
             }}
@@ -247,7 +236,17 @@ const DrawerShadowsocks: FC<drawerShadowsocksProps> = (props) => {
                 id: 'module.server.manage.parent_id.option.default',
               })}
             </Option>
-            {parentNodes &&
+            {node !== undefined &&
+              parentNodes
+                .filter((nodeItem) => nodeItem.id !== node?.id)
+                .map((nodeItem: API.Admin.NodeItem) => {
+                  return (
+                    <Option key={nodeItem.id} value={nodeItem.id}>
+                      {nodeItem.name}
+                    </Option>
+                  )
+                })}
+            {node === undefined &&
               parentNodes.map((nodeItem: API.Admin.NodeItem) => {
                 return (
                   <Option key={nodeItem.id} value={nodeItem.id}>
