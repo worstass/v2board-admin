@@ -1,7 +1,7 @@
 import type { FC } from 'react'
 import { useIntl, Link, useModel } from 'umi'
 import { Drawer, Input, Select, Space, Button, message, Tooltip } from 'antd'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import ModalGroup from '@/components/Modal/group'
 import { V2rayNodeSave } from '@/services'
 import { QuestionCircleOutlined, ReadOutlined } from '@ant-design/icons'

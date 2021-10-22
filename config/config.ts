@@ -45,7 +45,7 @@ export default defineConfig({
       : undefined,
   define: {
     'process.env.STANDALONE': process.env.STANDALONE,
-    'process.env.VERSION': '1.0.17',
+    'process.env.VERSION': '1.0.18',
     'process.env.CURRENCY_LOCALE': process.env.CURRENCY_LOCALE ?? 'zh-CN',
     'process.env.CURRENCY_UNIT': process.env.CURRENCY_UNIT ?? 'CNY',
   },
