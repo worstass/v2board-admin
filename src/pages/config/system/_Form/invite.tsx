@@ -21,10 +21,10 @@ export interface formInviteProps {
   commissionWithdrawLimit: number
   commissionWithdrawMethod: string
   withdrawCloseEnable: boolean
-  freeSubscriptionPlanId: number
-  freeSubscriptionCycle: string
-  freeSubscriptionLimit: number
-  freeSubscriptionRecoveryEnable: boolean
+  packagePlanId: number
+  packageCycle: string
+  packageLimit: number
+  packageRecoveryEnable: boolean
   onChange: (data: Record<string, any>) => void
 }
 
@@ -41,10 +41,10 @@ const FormInvite: FC<Partial<formInviteProps>> = (props) => {
     commissionWithdrawLimit,
     commissionWithdrawMethod,
     withdrawCloseEnable,
-    freeSubscriptionPlanId,
-    freeSubscriptionCycle,
-    freeSubscriptionLimit,
-    freeSubscriptionRecoveryEnable,
+    packagePlanId,
+    packageCycle,
+    packageLimit,
+    packageRecoveryEnable,
     onChange,
   } = props
 
@@ -52,9 +52,9 @@ const FormInvite: FC<Partial<formInviteProps>> = (props) => {
   const inviteGenLimitRef = useRef<HTMLInputElement>(null)
   const commissionWithdrawLimitRef = useRef<HTMLInputElement>(null)
   const commissionWithdrawMethodRef = useRef<HTMLTextAreaElement>(null)
-  const freeSubscriptionPlanIdRef = useRef<HTMLSelectElement>(null)
-  const freeSubscriptionCycleRef = useRef<HTMLSelectElement>(null)
-  const freeSubscriptionLimitRef = useRef<HTMLInputElement>(null)
+  const packagePlanIdRef = useRef<HTMLSelectElement>(null)
+  const packageCycleRef = useRef<HTMLSelectElement>(null)
+  const packageLimitRef = useRef<HTMLInputElement>(null)
 
   const [switchInviteForce, setSwitchInviteForce] = useState(inviteForce)
   const [switchInviteNeverExpire, setSwitchInviteNeverExpire] = useState(inviteNeverExpire)
@@ -63,12 +63,11 @@ const FormInvite: FC<Partial<formInviteProps>> = (props) => {
   const [switchCommissionAutoCheckEnable, setSwitchcommissionAutoCheckEnable] =
     useState(commissionAutoCheckEnable)
   const [switchWithdrawCloseEnable, setSwitchWithdrawCloseEnable] = useState(withdrawCloseEnable)
-  const [switchFreeSubscriptionRecoveryEnable, setSwitchFreeSubscriptionRecoveryEnable] = useState(
-    freeSubscriptionRecoveryEnable,
-  )
+  const [switchpackageRecoveryEnable, setSwitchpackageRecoveryEnable] =
+    useState(packageRecoveryEnable)
 
-  const [displayFreeSubscriptionChildren, setDisplayFreeSubscriptionChildren] = useState(
-    (freeSubscriptionPlanId as number) > 0,
+  const [displaypackageChildren, setDisplaypackageChildren] = useState(
+    (packagePlanId as number) > 0,
   )
 
   const { run } = useDebounceFn(
@@ -83,12 +82,10 @@ const FormInvite: FC<Partial<formInviteProps>> = (props) => {
         commission_withdraw_limit: Number(commissionWithdrawLimitRef.current?.value).valueOf(),
         commission_withdraw_method: commissionWithdrawMethodRef.current?.value.split(','),
         withdraw_close_enable: Boolean(switchWithdrawCloseEnable).valueOf() ? 1 : 0,
-        free_subscription_plan_id: Number(freeSubscriptionPlanIdRef.current?.value).valueOf(),
-        free_subscription_cycle: freeSubscriptionCycleRef.current?.value,
-        free_subscription_limit: Number(freeSubscriptionLimitRef.current?.value).valueOf(),
-        free_subscription_recovery_enable: Boolean(switchFreeSubscriptionRecoveryEnable).valueOf()
-          ? 1
-          : 0,
+        package_plan_id: Number(packagePlanIdRef.current?.value).valueOf(),
+        package_cycle: packageCycleRef.current?.value,
+        package_limit: Number(packageLimitRef.current?.value).valueOf(),
+        package_recovery_enable: Boolean(switchpackageRecoveryEnable).valueOf() ? 1 : 0,
       }
       onChange?.(data)
     },
@@ -304,35 +301,35 @@ const FormInvite: FC<Partial<formInviteProps>> = (props) => {
         <div className="col-lg-6">
           <div className="font-weight-bold my-1">
             {intl.formatMessage({
-              id: 'module.config.system.invite.free_subscription_plan_id',
+              id: 'module.config.system.invite.package_plan_id',
             })}
           </div>
           <div className="font-size-sm my-1">
             {intl.formatMessage({
-              id: 'module.config.system.invite.free_subscription_plan_id.tip',
+              id: 'module.config.system.invite.package_plan_id.tip',
             })}
           </div>
         </div>
         <div className="col-lg-6 text-right">
           <select
             className="form-control"
-            ref={freeSubscriptionPlanIdRef}
-            defaultValue={freeSubscriptionPlanId}
+            ref={packagePlanIdRef}
+            defaultValue={packagePlanId}
             onChange={(e: ChangeEvent<HTMLSelectElement>) => {
               if (Number(e.target.value).valueOf() > 0) {
-                setDisplayFreeSubscriptionChildren(true)
+                setDisplaypackageChildren(true)
               } else {
-                setDisplayFreeSubscriptionChildren(false)
+                setDisplaypackageChildren(false)
               }
               changeHandler()
             }}
             placeholder={intl.formatMessage({
-              id: 'module.config.system.invite.free_subscription_plan_id.placeholder',
+              id: 'module.config.system.invite.package_plan_id.placeholder',
             })}
           >
             <option value={0}>
               {intl.formatMessage({
-                id: 'module.config.system.invite.free_subscription_plan_id.option.close',
+                id: 'module.config.system.invite.package_plan_id.option.close',
               })}
             </option>
             {planItems?.map((plan: planItem) => {
@@ -347,65 +344,65 @@ const FormInvite: FC<Partial<formInviteProps>> = (props) => {
       </div>
       <div
         className="row v2board-config-children p-4 border-bottom"
-        style={displayFreeSubscriptionChildren ? {} : { display: 'none' }}
+        style={displaypackageChildren ? {} : { display: 'none' }}
       >
         <div className="col-lg-6">
           <div className="font-weight-bold my-1">
             {intl.formatMessage({
-              id: 'module.config.system.invite.free_subscription_cycle',
+              id: 'module.config.system.invite.package_cycle',
             })}
           </div>
         </div>
         <div className="col-lg-6 text-right">
           <select
             className="form-control"
-            ref={freeSubscriptionCycleRef}
-            defaultValue={freeSubscriptionCycle}
+            ref={packageCycleRef}
+            defaultValue={packageCycle}
             onChange={(e: ChangeEvent<HTMLSelectElement>) => {
               changeHandler()
             }}
             placeholder={intl.formatMessage({
-              id: 'module.config.system.invite.free_subscription_cycle.placeholder',
+              id: 'module.config.system.invite.package_cycle.placeholder',
             })}
           >
             <option value="month_price">
               {intl.formatMessage({
-                id: 'module.config.system.invite.free_subscription_cycle.option.month_price',
+                id: 'module.config.system.invite.package_cycle.option.month_price',
               })}
             </option>
             <option value="quarter_price">
               {intl.formatMessage({
-                id: 'module.config.system.invite.free_subscription_cycle.option.quarter_price',
+                id: 'module.config.system.invite.package_cycle.option.quarter_price',
               })}
             </option>
             <option value="half_year_price">
               {intl.formatMessage({
-                id: 'module.config.system.invite.free_subscription_cycle.option.half_year_price',
+                id: 'module.config.system.invite.package_cycle.option.half_year_price',
               })}
             </option>
             <option value="year_price">
               {intl.formatMessage({
-                id: 'module.config.system.invite.free_subscription_cycle.option.year_price',
+                id: 'module.config.system.invite.package_cycle.option.year_price',
               })}
             </option>
             <option value="two_year_price">
               {intl.formatMessage({
-                id: 'module.config.system.invite.free_subscription_cycle.option.two_year_price',
+                id: 'module.config.system.invite.package_cycle.option.two_year_price',
               })}
             </option>
             <option value="three_year_price">
               {intl.formatMessage({
-                id: 'module.config.system.invite.free_subscription_cycle.option.three_year_price',
+                id: 'module.config.system.invite.package_cycle.option.three_year_price',
               })}
             </option>
             <option value="reset_price">
               {intl.formatMessage({
-                id: 'module.config.system.invite.free_subscription_cycle.option.reset_price',
+                id: 'module.config.system.invite.package_cycle.option.reset_price',
               })}
             </option>
             <option value="onetime_price">
               {intl.formatMessage({
-                id: 'module.config.system.invite.free_subscription_cycle.option.onetime_price',
+                id: 'module.config.system.invite.package_cycle.option.onetime_price',
               })}
             </option>
           </select>
@@ -413,17 +410,17 @@ const FormInvite: FC<Partial<formInviteProps>> = (props) => {
       </div>
       <div
         className="row v2board-config-children p-4 border-bottom"
-        style={displayFreeSubscriptionChildren ? {} : { display: 'none' }}
+        style={displaypackageChildren ? {} : { display: 'none' }}
       >
         <div className="col-lg-6">
           <div className="font-weight-bold my-1">
             {intl.formatMessage({
-              id: 'module.config.system.invite.free_subscription_limit',
+              id: 'module.config.system.invite.package_limit',
             })}
           </div>
           <div className="font-size-sm my-1">
             {intl.formatMessage({
-              id: 'module.config.system.invite.free_subscription_limit.tip',
+              id: 'module.config.system.invite.package_limit.tip',
             })}
           </div>
         </div>
@@ -432,10 +429,10 @@ const FormInvite: FC<Partial<formInviteProps>> = (props) => {
             type="number"
             className="form-control"
             placeholder={intl.formatMessage({
-              id: 'module.config.system.invite.free_subscription_limit.placeholder',
+              id: 'module.config.system.invite.package_limit.placeholder',
             })}
-            ref={freeSubscriptionLimitRef}
-            defaultValue={freeSubscriptionLimit}
+            ref={packageLimitRef}
+            defaultValue={packageLimit}
             onChange={changeHandler}
           />
         </div>
@@ -443,25 +440,25 @@ const FormInvite: FC<Partial<formInviteProps>> = (props) => {
 
       <div
         className="row v2board-config-children p-4 border-bottom"
-        style={displayFreeSubscriptionChildren ? {} : { display: 'none' }}
+        style={displaypackageChildren ? {} : { display: 'none' }}
       >
         <div className="col-lg-6">
           <div className="font-weight-bold my-1">
             {intl.formatMessage({
-              id: 'module.config.system.invite.free_subscription_recovery_enable',
+              id: 'module.config.system.invite.package_recovery_enable',
             })}
           </div>
           <div className="font-size-sm my-1">
             {intl.formatMessage({
-              id: 'module.config.system.invite.free_subscription_recovery_enable.tip',
+              id: 'module.config.system.invite.package_recovery_enable.tip',
             })}
           </div>
         </div>
         <div className="col-lg-6 text-right">
           <Switch
-            defaultChecked={switchFreeSubscriptionRecoveryEnable}
+            defaultChecked={switchpackageRecoveryEnable}
             onChange={(checked: boolean) => {
-              setSwitchFreeSubscriptionRecoveryEnable(checked)
+              setSwitchpackageRecoveryEnable(checked)
               changeHandler()
             }}
           />

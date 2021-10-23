@@ -106,12 +106,10 @@ const ConfigSystemPage: FC = () => {
         commissionAutoCheckEnable: Boolean(configsResult.data.invite.commission_auto_check_enable),
         commissionWithdrawMethod: configsResult.data.invite.commission_withdraw_method,
         withdrawCloseEnable: Boolean(configsResult.data.invite.withdraw_close_enable),
-        freeSubscriptionPlanId: configsResult.data.invite.free_subscription_plan_id,
-        freeSubscriptionCycle: configsResult.data.invite.free_subscription_cycle,
-        freeSubscriptionLimit: configsResult.data.invite.free_subscription_limit,
-        freeSubscriptionRecoveryEnable: Boolean(
-          configsResult.data.invite.free_subscription_recovery_enable,
-        ),
+        packagePlanId: configsResult.data.invite.package_plan_id,
+        packageCycle: configsResult.data.invite.package_cycle,
+        packageLimit: configsResult.data.invite.package_limit,
+        packageRecoveryEnable: Boolean(configsResult.data.invite.package_recovery_enable),
         onChange: saveHandler,
       })
 

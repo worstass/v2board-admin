@@ -112,10 +112,10 @@ declare namespace API {
           commission_withdraw_limit: number
           commission_withdraw_method: string
           withdraw_close_enable: number
-          free_subscription_plan_id: number
-          free_subscription_cycle: string
-          free_subscription_limit: number
-          free_subscription_recovery_enable: boolean
+          package_plan_id: number
+          package_cycle: string
+          package_limit: number
+          package_recovery_enable: boolean
         }
         subscribe: {
           plan_change_enable: number
