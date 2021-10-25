@@ -14,7 +14,7 @@ const { Column } = Table
 export interface changeValues {
   pageSize: number
   pageCurrent: number
-  filter?: API.Admin.UserFilterItem[]
+  filter?: API.Admin.OrderFilterItem[]
 }
 
 export interface listProps {
