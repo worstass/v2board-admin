@@ -56,7 +56,7 @@ declare namespace API {
         last_month_income: number
         month_income: number
         month_register_total: number
-        ticket_pendding_total: number
+        ticket_pending_total: number
       }
     }
 

@@ -72,8 +72,8 @@ const Overview: FC = () => {
           <div className="block-content block-content-full d-flex align-items-center justify-content-between">
             <div className="ml-3">
               <p className="font-size-h2 font-w300 text-black mb-0">
-                {(adminStat?.data.ticket_pendding_total as number) > 0
-                  ? adminStat?.data.ticket_pendding_total
+                {(adminStat?.data.ticket_pending_total as number) > 0
+                  ? adminStat?.data.ticket_pending_total
                   : '-'}
               </p>
               <Link
@@ -81,7 +81,7 @@ const Overview: FC = () => {
                 to="#"
                 onClick={(e: React.MouseEvent) => e.preventDefault()}
               >
-                {intl.formatMessage({ id: 'module.dashboard.ticket_pendding_total' })}
+                {intl.formatMessage({ id: 'module.dashboard.ticket_pending_total' })}
               </Link>
             </div>
             <div>

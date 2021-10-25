@@ -33,7 +33,7 @@ export default {
   'module.dashboard.month_income': '本月合计收入',
   'module.dashboard.last_month_income': '上月收入合计',
   'module.dashboard.month_register_total': '本月新增用户',
-  'module.dashboard.ticket_pendding_total': '待办工单',
+  'module.dashboard.ticket_pending_total': '待办工单',
   'module.dashboard.commission_pending_tota': '佣金待确认',
   'module.dashboard.server_last_rank': '昨日节点流量排行',
   'module.dashboard.monitor_stats.warning': '当前队列服务运行异常，可能会导致业务无法使用。',
