@@ -168,13 +168,8 @@ const List: FC<listProps> = (props) => {
         />
         <Column
           title={intl.formatMessage({ id: 'module.knowledge.list.column.category' })}
-          key="title"
-          dataIndex="title"
-        />
-        <Column
-          title={intl.formatMessage({ id: 'module.knowledge.list.column.category' })}
-          key="title"
-          dataIndex="title"
+          key="category"
+          dataIndex="category"
         />
         <Column
           title={intl.formatMessage({ id: 'module.knowledge.list.column.updated_at' })}
