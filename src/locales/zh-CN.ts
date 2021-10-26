@@ -403,6 +403,7 @@ export default {
   'module.plan.list.column.action.drop.message.success': '删除成功',
   'module.plan.list.column.show': '销售状态',
   'module.plan.list.column.renew': '续费',
+  'module.plan.list.column.renew.tip': '在订阅停止销售时，已购用户是否可以续费',
   'module.plan.list.column.name': '名称',
   'module.plan.list.column.count': '统计',
   'module.plan.list.column.transfer_enable': '流量',

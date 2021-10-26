@@ -1,7 +1,7 @@
 import './style.less'
 import type { FC } from 'react'
 import { useIntl, Link, useModel } from 'umi'
-import { Table, Space, Divider, Switch, Menu, Dropdown, message, Tag } from 'antd'
+import { Table, Space, Divider, Switch, Menu, Dropdown, message, Tag, Tooltip } from 'antd'
 import {
   DragOutlined,
   FormOutlined,
@@ -174,7 +174,11 @@ const List: FC<listProps> = (props) => {
           title={
             <Space>
               {intl.formatMessage({ id: 'module.plan.list.column.renew' })}
+              <Tooltip
+                  title={intl.formatMessage({ id: 'module.plan.list.column.renew.tip' })}
+                >
               <QuestionCircleOutlined style={{ verticalAlign: '0.05rem' }} />
+              </Tooltip>
             </Space>
           }
           key="renew"
