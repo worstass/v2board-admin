@@ -670,3 +670,31 @@ export async function orderUpdate(
     ...(options || {}),
   })
 }
+
+export async function invitePackages(
+  params: API.Admin.InvitePackageParams,
+  options?: Record<string, any>,
+) {
+  return request<API.Admin.InvitePackageResult>('/api/v1/admin/invite-package/fetch', {
+    method: 'GET',
+    params: {
+      ...params,
+    },
+    paramsSerializer: (urlParams) => stringify(urlParams, {}),
+    ...(options || {}),
+  })
+}
+
+export async function invitePackageUpdate(
+  body: API.Admin.InvitePackageUpdateParams,
+  options?: Record<string, any>,
+) {
+  return request<API.Admin.InvitePackageUpdateResult>('/api/v1/admin/invite-package/update', {
+    method: 'POST',
+    headers: {
+      'Content-Type': apiContentType,
+    },
+    data: body,
+    ...(options || {}),
+  })
+}

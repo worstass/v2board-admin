@@ -14,6 +14,7 @@ import {
   AccountBookOutlined,
   UsergroupAddOutlined,
   DeleteOutlined,
+  DropboxOutlined,
 } from '@ant-design/icons'
 import { useIntl, Link } from 'umi'
 import React from 'react'
@@ -229,6 +230,20 @@ const List: FC<listProps> = (props) => {
             <Space>
               <UsergroupAddOutlined style={{ verticalAlign: '0.05rem' }} />
               {intl.formatMessage({ id: 'module.user.list.column.action.user_invite' })}
+            </Space>
+          </Link>
+        </Menu.Item>
+
+        <Menu.Item key="user_invite_package">
+          <Link
+            to={{
+              pathname: '/invite-package',
+              state: { filter: [{ key: 'user_id', condition: '=', value: record.id }] },
+            }}
+          >
+            <Space>
+              <DropboxOutlined style={{ verticalAlign: '0.05rem' }} />
+              {intl.formatMessage({ id: 'module.user.list.column.action.user_invite_package' })}
             </Space>
           </Link>
         </Menu.Item>

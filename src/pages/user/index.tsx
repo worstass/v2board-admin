@@ -29,7 +29,6 @@ const UserPage: FC = () => {
     location.state !== undefined
       ? (location.state as { filter: API.Admin.UserFilterItem[] })
       : { filter: undefined }
-
   const [adminUsers, setAdminUsers] = useState<(API.Admin.UserItem & API.User.InfoItem)[]>()
   const [adminGroups, setAdminGroups] = useState<API.Admin.GroupItem[]>()
   const [adminPlans, setAdminPlans] = useState<API.Admin.PlanItem[]>()

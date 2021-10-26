@@ -59,21 +59,26 @@ export const menus: Menus = {
       icon: 'present',
     },
     '8': {
+      name: 'module.invite_package',
+      path: '/invite-package',
+      icon: 'social-dropbox',
+    },
+    '9': {
       name: 'module.user',
       path: '/user',
       icon: 'users',
     },
-    '9': {
+    '10': {
       name: 'module.notice',
       path: '/notice',
       icon: 'speech',
     },
-    '10': {
+    '11': {
       name: 'module.ticket',
       path: '/ticket',
       icon: 'support',
     },
-    '11': {
+    '12': {
       name: 'module.knowledge',
       path: '/knowledge',
       icon: 'bulb',

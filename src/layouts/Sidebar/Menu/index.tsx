@@ -82,13 +82,13 @@ const Menu: FC = () => {
             index="7"
             icon={menus.getIcon('7')}
           />
-          <li className="nav-main-heading">{intl.formatMessage({ id: 'module.group.user' })}</li>
           <MenuItem
             url={menus.getPath('8')}
             name={menus.getName('8')}
             index="8"
             icon={menus.getIcon('8')}
           />
+          <li className="nav-main-heading">{intl.formatMessage({ id: 'module.group.user' })}</li>
           <MenuItem
             url={menus.getPath('9')}
             name={menus.getName('9')}
@@ -106,6 +106,12 @@ const Menu: FC = () => {
             name={menus.getName('11')}
             index="11"
             icon={menus.getIcon('11')}
+          />
+          <MenuItem
+            url={menus.getPath('12')}
+            name={menus.getName('12')}
+            index="12"
+            icon={menus.getIcon('12')}
           />
           <li className="nav-main-heading">{intl.formatMessage({ id: 'module.group.index' })}</li>
           <li className="nav-main-item">

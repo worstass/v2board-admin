@@ -870,6 +870,39 @@ declare namespace API {
     interface OrderUpdateResult {
       data: boolean
     }
+
+    type InvitePackageFilterItem = FilterItem
+
+    interface InvitePackageParams {
+      pageSize: number
+      current: number
+      filter?: InvitePackageFilterItem[]
+    }
+
+    interface InvitePackageItem {
+      id: number
+      user_id: number
+      from_user_id: number
+      plan_id: number
+      plan_cycle: string
+      status: number
+      created_at: number
+      updated_at: number
+    }
+
+    interface InvitePackageResult {
+      data: InvitePackageItem[]
+      total: number
+    }
+
+    interface InvitePackageUpdateParams {
+      id: number
+      status: number
+    }
+
+    interface InvitePackageUpdateResult {
+      data: boolean
+    }
   }
 
   namespace Horizon {

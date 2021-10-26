@@ -359,6 +359,7 @@ const FormInvite: FC<Partial<formInviteProps>> = (props) => {
             ref={packageCycleRef}
             defaultValue={packageCycle}
             onChange={(e: ChangeEvent<HTMLSelectElement>) => {
+              e.preventDefault()
               changeHandler()
             }}
             placeholder={intl.formatMessage({

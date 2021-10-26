@@ -54,7 +54,7 @@ const List: FC<listProps> = (props) => {
 
   const unpaidMenu = (tradeNo: string) => (
     <Menu>
-      <Menu.Item key="pending"> 
+      <Menu.Item key="pending">
         <Link
           to=""
           onClick={async (e: React.MouseEvent) => {
