@@ -509,6 +509,7 @@ declare namespace API {
       category: string
       sort: number
       show: number
+      free: number
       created_at: number
       updated_at: number
     }
@@ -530,6 +531,14 @@ declare namespace API {
     }
 
     interface KnowledgeShowResult {
+      data: boolean
+    }
+
+    interface KnowledgeFreeParams {
+      id: number
+    }
+
+    interface KnowledgeFreeResult {
       data: boolean
     }
 

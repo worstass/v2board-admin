@@ -373,6 +373,8 @@ export default {
   'module.knowledge.list.column.action.drop.message.success': '删除成功',
   'module.knowledge.list.column.action.edit': '编辑',
   'module.knowledge.list.column.show': '显隐',
+  'module.knowledge.list.column.free': '免订阅',
+  'module.knowledge.list.column.free.tip': '用户是否需要拥有订阅才能显示',
   'module.knowledge.list.column.title': '标题',
   'module.knowledge.list.column.category': '分类',
   'module.knowledge.list.column.updated_at': '更新时间',

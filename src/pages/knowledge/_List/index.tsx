@@ -1,11 +1,16 @@
 import './style.less'
 import type { FC } from 'react'
 import { useIntl, Link } from 'umi'
-import { Table, Space, Divider, Switch, Menu, Dropdown, message } from 'antd'
-import { DragOutlined, FormOutlined, DeleteOutlined } from '@ant-design/icons'
+import { Table, Space, Divider, Switch, Menu, Dropdown, message, Tooltip } from 'antd'
+import {
+  DragOutlined,
+  FormOutlined,
+  DeleteOutlined,
+  QuestionCircleOutlined,
+} from '@ant-design/icons'
 import { SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc'
 import React, { useState } from 'react'
-import { knowledgeShow, knowledgeDrop } from '@/services'
+import { knowledgeShow, knowledgeDrop, knowledgeFree } from '@/services'
 import DrawerKnowledge from '../_Drawer'
 import moment from 'moment'
 import { arrayMoveImmutable } from 'array-move'
@@ -124,6 +129,10 @@ const List: FC<listProps> = (props) => {
     await knowledgeShow({ id: record.id })
   }
 
+  const freeChangeHandler = async (record: API.Admin.KnowledgeItem) => {
+    await knowledgeFree({ id: record.id })
+  }
+
   return (
     <>
       <Table
@@ -161,6 +170,33 @@ const List: FC<listProps> = (props) => {
             )
           }}
         />
+        <Column
+          title={
+            <Space>
+              {intl.formatMessage({ id: 'module.knowledge.list.column.free' })}
+              <Tooltip title={intl.formatMessage({ id: 'module.knowledge.list.column.free.tip' })}>
+                <QuestionCircleOutlined style={{ verticalAlign: '0.05rem' }} />
+              </Tooltip>
+            </Space>
+          }
+          key="free"
+          dataIndex="free"
+          render={(free: number, record: API.Admin.KnowledgeItem) => {
+            return (
+              <>
+                <Switch
+                  defaultChecked={Boolean(free).valueOf()}
+                  onChange={(checked: boolean, event: Event) => {
+                    event.preventDefault()
+                    freeChangeHandler(record)
+                  }}
+                  size="small"
+                />
+              </>
+            )
+          }}
+        />
+
         <Column
           title={intl.formatMessage({ id: 'module.knowledge.list.column.title' })}
           key="title"
