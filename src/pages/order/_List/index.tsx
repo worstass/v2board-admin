@@ -54,7 +54,7 @@ const List: FC<listProps> = (props) => {
 
   const unpaidMenu = (tradeNo: string) => (
     <Menu>
-      <Menu.Item>
+      <Menu.Item key="pending"> 
         <Link
           to=""
           onClick={async (e: React.MouseEvent) => {
@@ -74,7 +74,7 @@ const List: FC<listProps> = (props) => {
           {intl.formatMessage({ id: 'module.order.list.column.status.unpaid.mark.pending' })}
         </Link>
       </Menu.Item>
-      <Menu.Item>
+      <Menu.Item key="success">
         <Link
           to=""
           onClick={async (e: React.MouseEvent) => {
@@ -116,7 +116,7 @@ const List: FC<listProps> = (props) => {
 
   const commissonMenu = (tradeNo: string) => (
     <Menu>
-      <Menu.Item>
+      <Menu.Item key="valid">
         <Link
           to=""
           onClick={async (e: React.MouseEvent) => {
@@ -127,7 +127,7 @@ const List: FC<listProps> = (props) => {
           {intl.formatMessage({ id: 'module.order.list.column.commission_status.new.mark.valid' })}
         </Link>
       </Menu.Item>
-      <Menu.Item>
+      <Menu.Item key="invalid">
         <Link
           to=""
           onClick={async (e: React.MouseEvent) => {
