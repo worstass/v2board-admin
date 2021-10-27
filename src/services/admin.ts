@@ -383,6 +383,21 @@ export async function knowledgeShow(
   })
 }
 
+
+export async function knowledgeFree(
+  body: API.Admin.KnowledgeFreeParams,
+  options?: Record<string, any>,
+) {
+  return request<API.Admin.KnowledgeFreeResult>('/api/v1/admin/knowledge/free', {
+    method: 'POST',
+    headers: {
+      'Content-Type': apiContentType,
+    },
+    data: body,
+    ...(options || {}),
+  })
+}
+
 export async function knowledgeSave(
   body: API.Admin.KnowledgeSaveParams,
   options?: Record<string, any>,
