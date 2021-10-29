@@ -3,7 +3,7 @@ import { useIntl, useLocation } from 'umi'
 import { Space, Button } from 'antd'
 import { useState, useEffect } from 'react'
 import { FilterOutlined } from '@ant-design/icons'
-import { invitePackages, plans, users } from '@/services'
+import { invitePackages, users } from '@/services'
 import type { changeValues } from './_List'
 import List from './_List'
 import DrawerFilter from './_Drawer/filter'
@@ -22,7 +22,6 @@ const InvitePackagePage: FC = () => {
   const [listUpdateStatus, setListUpdateStatus] = useState(false)
   const [drawerFilterVisible, setDrawerFilterVisible] = useState(false)
   const [adminInvitePackages, setAdminInvitePackages] = useState<API.Admin.InvitePackageItem[]>()
-  const [adminPlans, setAdminPlans] = useState<API.Admin.PlanItem[]>()
   const [adminUsers, setAdminUsers] = useState<API.Admin.UserItem[]>()
   const [pageSize, setPageSize] = useState(10)
   const [current, setCurrent] = useState(1)
@@ -76,16 +75,6 @@ const InvitePackagePage: FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [listUpdateStatus])
 
-  useEffect(() => {
-    ;(async () => {
-      const plansResult = await plans()
-      if (plansResult === undefined) {
-        return
-      }
-      setAdminPlans(plansResult.data)
-    })()
-  }, [])
-
   return (
     <>
       <div className="p-0 p-lg-4">
@@ -110,7 +99,6 @@ const InvitePackagePage: FC = () => {
             {adminUsers !== undefined && (
               <List
                 dataSource={adminInvitePackages as []}
-                plans={adminPlans as []}
                 users={adminUsers as []}
                 total={total}
                 pageSize={pageSize}
@@ -118,9 +106,6 @@ const InvitePackagePage: FC = () => {
                 onChange={(values: changeValues) => {
                   setPageSize(values.pageSize)
                   setCurrent(values.pageCurrent)
-                  setListUpdateStatus(true)
-                }}
-                onEditSuccess={() => {
                   setListUpdateStatus(true)
                 }}
               />

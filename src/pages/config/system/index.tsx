@@ -107,9 +107,8 @@ const ConfigSystemPage: FC = () => {
         commissionWithdrawMethod: configsResult.data.invite.commission_withdraw_method,
         withdrawCloseEnable: Boolean(configsResult.data.invite.withdraw_close_enable),
         packagePlanId: configsResult.data.invite.package_plan_id,
-        packageCycle: configsResult.data.invite.package_cycle,
         packageLimit: configsResult.data.invite.package_limit,
-        packageRecoveryEnable: Boolean(configsResult.data.invite.package_recovery_enable),
+        packageRecoveryLimit: configsResult.data.invite.package_recovery_limit,
         onChange: saveHandler,
       })
 

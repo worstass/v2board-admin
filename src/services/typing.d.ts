@@ -115,7 +115,7 @@ declare namespace API {
           package_plan_id: number
           package_cycle: string
           package_limit: number
-          package_recovery_enable: boolean
+          package_recovery_limit: number
         }
         subscribe: {
           plan_change_enable: number
@@ -902,15 +902,6 @@ declare namespace API {
     interface InvitePackageResult {
       data: InvitePackageItem[]
       total: number
-    }
-
-    interface InvitePackageUpdateParams {
-      id: number
-      status: number
-    }
-
-    interface InvitePackageUpdateResult {
-      data: boolean
     }
   }
 

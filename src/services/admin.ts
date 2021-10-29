@@ -383,7 +383,6 @@ export async function knowledgeShow(
   })
 }
 
-
 export async function knowledgeFree(
   body: API.Admin.KnowledgeFreeParams,
   options?: Record<string, any>,
@@ -696,20 +695,6 @@ export async function invitePackages(
       ...params,
     },
     paramsSerializer: (urlParams) => stringify(urlParams, {}),
-    ...(options || {}),
-  })
-}
-
-export async function invitePackageUpdate(
-  body: API.Admin.InvitePackageUpdateParams,
-  options?: Record<string, any>,
-) {
-  return request<API.Admin.InvitePackageUpdateResult>('/api/v1/admin/invite-package/update', {
-    method: 'POST',
-    headers: {
-      'Content-Type': apiContentType,
-    },
-    data: body,
     ...(options || {}),
   })
 }

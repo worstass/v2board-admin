@@ -174,10 +174,8 @@ const List: FC<listProps> = (props) => {
           title={
             <Space>
               {intl.formatMessage({ id: 'module.plan.list.column.renew' })}
-              <Tooltip
-                  title={intl.formatMessage({ id: 'module.plan.list.column.renew.tip' })}
-                >
-              <QuestionCircleOutlined style={{ verticalAlign: '0.05rem' }} />
+              <Tooltip title={intl.formatMessage({ id: 'module.plan.list.column.renew.tip' })}>
+                <QuestionCircleOutlined style={{ verticalAlign: '0.05rem' }} />
               </Tooltip>
             </Space>
           }
