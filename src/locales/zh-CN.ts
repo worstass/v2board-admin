@@ -55,6 +55,9 @@ export default {
     '用于订阅所使用，留空则为站点URL。如需多个订阅URL随机获取请使用逗号进行分割。',
   'module.config.system.site.subscribe_url.placeholder':
     '请输入订阅URL，末尾不要/。逗号分割支持多域名',
+  'module.config.system.site.invite_url': '邀请URL',
+  'module.config.system.site.invite_url.tip': '用于邀请链接，留空则为站点URL。',
+  'module.config.system.site.invite_url.placeholder': '请输入邀请URL。',
   'module.config.system.site.tos_url': '用户条款(TOS)URL',
   'module.config.system.site.tos_url.tip': '用于跳转到用户条款(TOS)',
   'module.config.system.site.tos_url.placeholder': '请输入用户条款URL，末尾不要/',
@@ -134,6 +137,7 @@ export default {
     '邀请用户注册成功，邀请人将获得该订阅的一次性流量',
   'module.config.system.invite.package_plan_id.placeholder': '请选择订阅',
   'module.config.system.invite.package_plan_id.option.close': '关闭',
+
   'module.config.system.invite.package_limit': '赠送用户流量的最大次数',
   'module.config.system.invite.package_limit.tip': '系统默认限制次数，超过限制将停止赠送',
   'module.config.system.invite.package_limit.placeholder': '请输入',
@@ -141,6 +145,19 @@ export default {
   'module.config.system.invite.package_recovery_limit.tip':
     '当被邀请用户完成任意套餐购买时，恢复流量赠送的限制次数',
   'module.config.system.invite.package_recovery_limit.placeholder': '请输入',
+  'module.config.system.invite.package_recovery_condition_type': '恢复限制次数的条件',
+  'module.config.system.invite.package_recovery_condition_type.tip': '系统将根据规则,恢复限制次数',
+  'module.config.system.invite.package_recovery_condition_type.placeholder': '请选择',
+  'module.config.system.invite.package_recovery_condition_type.option.zero': '被邀请人每次购买套餐',
+  'module.config.system.invite.package_recovery_condition_type.option.one': '被邀请人首次订阅变更',
+  'module.config.system.invite.package_recovery_condition_type.option.two': '被邀请人满足流量下限',
+  'module.config.system.invite.package_recovery_condition_type.option.three':
+    '被邀请人首次订阅变更并满足流量使用下限',
+  'module.config.system.invite.package_recovery_condition_type.option.four':
+    '被邀请人首次订阅变更或者满足流量使用下限',
+  'module.config.system.invite.package_recovery_traffic_lower_limit': '被邀用户使用流量下限',
+  'module.config.system.invite.package_recovery_traffic_lower_limit.tip': ' ',
+  'module.config.system.invite.package_recovery_traffic_lower_limit.placeholder': '请输入',
   'module.config.system.invite.withdraw_close_enable': '关闭提现',
   'module.config.system.invite.withdraw_close_enable.tip':
     '关闭后将禁止用户申请提现，且邀请佣金将会直接进入用户余额。',
@@ -493,6 +510,7 @@ export default {
   'module.user.list.column.action.assign_order': '分配订单',
   'module.user.list.column.action.copy_url': '复制订阅URL',
   'module.user.list.column.action.reset_secret': '重置UUID及订阅URL',
+  'module.user.list.column.action.stats': '统计',
   'module.user.list.column.action.user_order': 'TA的订单',
   'module.user.list.column.action.user_invite': 'TA的邀请',
   'module.user.list.column.action.user_invite_package': 'TA的邀请流量',
@@ -626,6 +644,19 @@ export default {
   'module.user.action.reset_secert.confirm.title': '重置安全信息',
   'module.user.action.reset_secert.confirm.content': `确定要重置{email}的安全信息吗？`,
   'module.user.action.reset_secert.message.success': '重置安全信息成功',
+  'module.user.stats': '用户统计',
+  'module.user.stats.invite': '邀请',
+  'module.user.stats.invite.user_total': '邀请人数',
+  'module.user.stats.invite.activated_packages_total': '已获得礼包',
+  'module.user.stats.invite.activated_package_values': '已获得流量',
+  'module.user.stats.invite.available_packages_total': '可获得礼包',
+  'module.user.stats.invite.plan_changed_total': '被邀请人订阅变化',
+  'module.user.stats.invite.paid_order_total': '被邀请人购买总单数',
+  'module.user.stats.invite.traffic_used_total': '被邀请人满足流量使用下限',
+  'module.user.stats.invite.traffic_used_and_plan_changed_total':
+    '被邀请人满足流量使用下限且订阅变化',
+  'module.user.stats.invite.traffic_used_or_plan_changed_total':
+    '被邀请人满足流量使用下限且订阅变化',
   'module.coupon.add_btn': '添加优惠卷',
   'module.coupon.list.column.id': '#',
   'module.coupon.list.column.name': '劵名称',

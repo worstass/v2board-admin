@@ -98,6 +98,7 @@ declare namespace API {
           safe_mode_enable: number
           stop_register: number
           subscribe_url?: string
+          invite_url?: string
           tos_url?: string
           try_out_plan_id: number
           try_out_hour: number
@@ -116,6 +117,8 @@ declare namespace API {
           package_cycle: string
           package_limit: number
           package_recovery_limit: number
+          package_recovery_condition_type: number
+          package_recovery_traffic_lower_limit: number
         }
         subscribe: {
           plan_change_enable: number
@@ -635,6 +638,30 @@ declare namespace API {
 
     interface UserInfoResult {
       data: API.User.InfoItem
+    }
+
+    interface UserStatsParams {
+      id: number
+    }
+
+    interface UserStatsResult {
+      data: {
+        order: {
+          income_total: number
+          unpaid_total: number
+        }
+        invite: {
+          user_total: number
+          activated_packages_total: number
+          activated_package_values: number
+          available_packages_total: number
+          plan_changed_total: number
+          paid_order_total: number
+          traffic_used_total: number
+          traffic_used_and_plan_changed_total: number
+          traffic_used_or_plan_changed_total: number
+        }
+      }
     }
 
     interface UserItem {

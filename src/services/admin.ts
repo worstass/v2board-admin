@@ -483,6 +483,16 @@ export async function userInfo(params: API.Admin.UserInfoParams, options?: Recor
   })
 }
 
+export async function userStats(params: API.Admin.UserStatsParams, options?: Record<string, any>) {
+  return request<API.Admin.UserStatsResult>('/api/v1/admin/user/stats', {
+    method: 'GET',
+    params: {
+      ...params,
+    },
+    ...(options || {}),
+  })
+}
+
 export async function users(params: API.Admin.UsersParams, options?: Record<string, any>) {
   return request<API.Admin.UsersResult>('/api/v1/admin/user/fetch', {
     method: 'GET',

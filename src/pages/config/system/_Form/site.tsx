@@ -13,6 +13,7 @@ export interface formSiteProps {
   appName: string
   appDescription: string
   appUrl: string
+  inviteUrl: string
   subscribeUrl: string
   tosUrl: string
   safeModeEnable: boolean
@@ -36,6 +37,7 @@ const FormSite: FC<Partial<formSiteProps>> = (props) => {
     appDescription,
     appUrl,
     subscribeUrl,
+    inviteUrl,
     tosUrl,
     safeModeEnable,
     stopRegister,
@@ -55,6 +57,7 @@ const FormSite: FC<Partial<formSiteProps>> = (props) => {
   const appNameRef = useRef<HTMLInputElement>(null)
   const appDescriptionRef = useRef<HTMLInputElement>(null)
   const appUrlRef = useRef<HTMLInputElement>(null)
+  const inviteUrlRef = useRef<HTMLInputElement>(null)
   const subscribeUrlRef = useRef<HTMLTextAreaElement>(null)
   const tosUrlRef = useRef<HTMLInputElement>(null)
   const tryOutPlanIDRef = useRef<HTMLSelectElement>(null)
@@ -88,6 +91,7 @@ const FormSite: FC<Partial<formSiteProps>> = (props) => {
         app_name: appNameRef.current?.value,
         app_description: appDescriptionRef.current?.value,
         app_url: appUrlRef.current?.value,
+        invite_url: inviteUrlRef.current?.value,
         subscribe_url: subscribeUrlRef.current?.value,
         tos_url: tosUrlRef.current?.value,
         safe_mode_enable: Boolean(switchSafeModeEnable).valueOf() ? 1 : 0,
@@ -193,6 +197,28 @@ const FormSite: FC<Partial<formSiteProps>> = (props) => {
               })}
               defaultValue={appUrl}
               ref={appUrlRef}
+              onChange={changeHandler}
+            />
+          </div>
+        </div>
+        <div className="row p-4 border-bottom">
+          <div className="col-lg-6">
+            <div className="font-weight-bold my-1">
+              {intl.formatMessage({ id: 'module.config.system.site.invite_url' })}
+            </div>
+            <div className="font-size-sm my-1">
+              {intl.formatMessage({ id: 'module.config.system.site.invite_url.tip' })}
+            </div>
+          </div>
+          <div className="col-lg-6 text-right">
+            <input
+              type="text"
+              className="form-control"
+              placeholder={intl.formatMessage({
+                id: 'module.config.system.site.invite_url.placeholder',
+              })}
+              defaultValue={inviteUrl}
+              ref={inviteUrlRef}
               onChange={changeHandler}
             />
           </div>

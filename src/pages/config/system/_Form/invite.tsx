@@ -24,6 +24,8 @@ export interface formInviteProps {
   packagePlanId: number
   packageLimit: number
   packageRecoveryLimit: number
+  packageRecoveryConditionType: number
+  packageRecoveryTrafficLowerLimit: number
   onChange: (data: Record<string, any>) => void
 }
 
@@ -43,6 +45,8 @@ const FormInvite: FC<Partial<formInviteProps>> = (props) => {
     packagePlanId,
     packageLimit,
     packageRecoveryLimit,
+    packageRecoveryConditionType,
+    packageRecoveryTrafficLowerLimit,
     onChange,
   } = props
 
@@ -53,7 +57,8 @@ const FormInvite: FC<Partial<formInviteProps>> = (props) => {
   const packagePlanIdRef = useRef<HTMLSelectElement>(null)
   const packageLimitRef = useRef<HTMLInputElement>(null)
   const packageRecoveryLimitRef = useRef<HTMLInputElement>(null)
-
+  const packageRecoveryConditionTypeRef = useRef<HTMLSelectElement>(null)
+  const packageRecoveryTrafficLowerLimitRef = useRef<HTMLInputElement>(null)
   const [switchInviteForce, setSwitchInviteForce] = useState(inviteForce)
   const [switchInviteNeverExpire, setSwitchInviteNeverExpire] = useState(inviteNeverExpire)
   const [switchCommissionFirstTimeEnable, setSwitchCommissionFirstTimeEnable] =
@@ -62,8 +67,11 @@ const FormInvite: FC<Partial<formInviteProps>> = (props) => {
     useState(commissionAutoCheckEnable)
   const [switchWithdrawCloseEnable, setSwitchWithdrawCloseEnable] = useState(withdrawCloseEnable)
 
-  const [displaypackageChildren, setDisplaypackageChildren] = useState(
+  const [displayPackageChildren, setDisplayPackageChildren] = useState(
     (packagePlanId as number) > 0,
+  )
+  const [displayPackageRecoveryChildren, setDisplayPackageRecoveryChildren] = useState(
+    (packageRecoveryConditionType as number) > 1,
   )
 
   const { run } = useDebounceFn(
@@ -82,6 +90,12 @@ const FormInvite: FC<Partial<formInviteProps>> = (props) => {
         package_cycle: 'onetime_price',
         package_limit: Number(packageLimitRef.current?.value).valueOf(),
         package_recovery_limit: Number(packageRecoveryLimitRef.current?.value).valueOf(),
+        package_recovery_condition_type: Number(
+          packageRecoveryConditionTypeRef.current?.value,
+        ).valueOf(),
+        package_recovery_traffic_lower_limit: Number(
+          packageRecoveryTrafficLowerLimitRef.current?.value,
+        ).valueOf(),
       }
       onChange?.(data)
     },
@@ -313,9 +327,9 @@ const FormInvite: FC<Partial<formInviteProps>> = (props) => {
             defaultValue={packagePlanId}
             onChange={(e: ChangeEvent<HTMLSelectElement>) => {
               if (Number(e.target.value).valueOf() > 0) {
-                setDisplaypackageChildren(true)
+                setDisplayPackageChildren(true)
               } else {
-                setDisplaypackageChildren(false)
+                setDisplayPackageChildren(false)
               }
               changeHandler()
             }}
@@ -340,7 +354,7 @@ const FormInvite: FC<Partial<formInviteProps>> = (props) => {
       </div>
       <div
         className="row v2board-config-children p-4 border-bottom"
-        style={displaypackageChildren ? {} : { display: 'none' }}
+        style={displayPackageChildren ? {} : { display: 'none' }}
       >
         <div className="col-lg-6">
           <div className="font-weight-bold my-1">
@@ -370,7 +384,7 @@ const FormInvite: FC<Partial<formInviteProps>> = (props) => {
 
       <div
         className="row v2board-config-children p-4 border-bottom"
-        style={displaypackageChildren ? {} : { display: 'none' }}
+        style={displayPackageChildren ? {} : { display: 'none' }}
       >
         <div className="col-lg-6">
           <div className="font-weight-bold my-1">
@@ -395,6 +409,101 @@ const FormInvite: FC<Partial<formInviteProps>> = (props) => {
             defaultValue={packageRecoveryLimit}
             onChange={changeHandler}
           />
+        </div>
+      </div>
+      <div
+        className="row v2board-config-children p-4 border-bottom"
+        style={displayPackageChildren ? {} : { display: 'none' }}
+      >
+        <div className="col-lg-6">
+          <div className="font-weight-bold my-1">
+            {intl.formatMessage({
+              id: 'module.config.system.invite.package_recovery_condition_type',
+            })}
+          </div>
+          <div className="font-size-sm my-1">
+            {intl.formatMessage({
+              id: 'module.config.system.invite.package_recovery_condition_type.tip',
+            })}
+          </div>
+        </div>
+        <div className="col-lg-6 text-right">
+          <select
+            className="form-control"
+            ref={packageRecoveryConditionTypeRef}
+            defaultValue={packageRecoveryConditionType}
+            onChange={(e: ChangeEvent<HTMLSelectElement>) => {
+              if (Number(e.target.value).valueOf() > 1) {
+                setDisplayPackageRecoveryChildren(true)
+              } else {
+                setDisplayPackageRecoveryChildren(false)
+              }
+              changeHandler()
+            }}
+            placeholder={intl.formatMessage({
+              id: 'module.config.system.invite.package_recovery_condition_type.placeholder',
+            })}
+          >
+            <option value={0}>
+              {intl.formatMessage({
+                id: 'module.config.system.invite.package_recovery_condition_type.option.zero',
+              })}
+            </option>
+            <option value={1}>
+              {intl.formatMessage({
+                id: 'module.config.system.invite.package_recovery_condition_type.option.one',
+              })}
+            </option>
+            <option value={2}>
+              {intl.formatMessage({
+                id: 'module.config.system.invite.package_recovery_condition_type.option.two',
+              })}
+            </option>
+            <option value={3}>
+              {intl.formatMessage({
+                id: 'module.config.system.invite.package_recovery_condition_type.option.three',
+              })}
+            </option>
+            <option value={4}>
+              {intl.formatMessage({
+                id: 'module.config.system.invite.package_recovery_condition_type.option.four',
+              })}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div
+        className="row v2board-config-children-cyan p-4 border-bottom"
+        style={displayPackageRecoveryChildren ? {} : { display: 'none' }}
+      >
+        <div className="col-lg-6">
+          <div className="font-weight-bold my-1">
+            {intl.formatMessage({
+              id: 'module.config.system.invite.package_recovery_traffic_lower_limit',
+            })}
+          </div>
+          <div className="font-size-sm my-1">
+            {intl.formatMessage({
+              id: 'module.config.system.invite.package_recovery_traffic_lower_limit.tip',
+            })}
+          </div>
+        </div>
+        <div className="col-lg-6 text-right">
+          <div className="input-group">
+            <input
+              type="number"
+              className="form-control"
+              placeholder={intl.formatMessage({
+                id: 'module.config.system.invite.package_recovery_traffic_lower_limit.placeholder',
+              })}
+              ref={packageRecoveryTrafficLowerLimitRef}
+              defaultValue={packageRecoveryTrafficLowerLimit}
+              onChange={changeHandler}
+            />
+            <div className="input-group-append">
+              <span className="input-group-text">MB</span>
+            </div>
+          </div>
         </div>
       </div>
     </>

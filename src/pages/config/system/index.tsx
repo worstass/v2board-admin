@@ -70,6 +70,7 @@ const ConfigSystemPage: FC = () => {
         appDescription: configsResult.data.site.app_description ?? '',
         subscribeUrl: configsResult.data.site.subscribe_url ?? '',
         tosUrl: configsResult.data.site.tos_url ?? '',
+        inviteUrl: configsResult.data.site.invite_url ?? '',
         safeModeEnable: Boolean(configsResult.data.site.safe_mode_enable).valueOf(),
         stopRegister: Boolean(configsResult.data.site.stop_register).valueOf(),
         emailVerify: Boolean(configsResult.data.site.email_verify).valueOf(),
@@ -109,6 +110,9 @@ const ConfigSystemPage: FC = () => {
         packagePlanId: configsResult.data.invite.package_plan_id,
         packageLimit: configsResult.data.invite.package_limit,
         packageRecoveryLimit: configsResult.data.invite.package_recovery_limit,
+        packageRecoveryConditionType: configsResult.data.invite.package_recovery_condition_type,
+        packageRecoveryTrafficLowerLimit:
+          configsResult.data.invite.package_recovery_traffic_lower_limit,
         onChange: saveHandler,
       })
 

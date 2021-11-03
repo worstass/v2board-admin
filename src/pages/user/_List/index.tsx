@@ -15,6 +15,7 @@ import {
   UsergroupAddOutlined,
   DeleteOutlined,
   DropboxOutlined,
+  FundOutlined,
 } from '@ant-design/icons'
 import { useIntl, Link } from 'umi'
 import React from 'react'
@@ -140,6 +141,18 @@ const List: FC<listProps> = (props) => {
             </Space>
           </Link>
         </Menu.Item>
+        <Menu.Item key="stats">
+          <Link
+            to={{
+              pathname: `/user/stats/${record.id}`,
+            }}
+          >
+            <Space>
+              <FundOutlined style={{ verticalAlign: '0.05rem' }} />
+              {intl.formatMessage({ id: 'module.user.list.column.action.stats' })}
+            </Space>
+          </Link>
+        </Menu.Item>
         <Menu.Item key="assign_order">
           <Link
             to=""
@@ -202,6 +215,7 @@ const List: FC<listProps> = (props) => {
             </Space>
           </Link>
         </Menu.Item>
+
         <Menu.Item key="user_order">
           <Link
             to={{
