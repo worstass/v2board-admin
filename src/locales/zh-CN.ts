@@ -656,7 +656,7 @@ export default {
   'module.user.stats.invite.traffic_used_and_plan_changed_total':
     '被邀请人满足流量使用下限且订阅变化',
   'module.user.stats.invite.traffic_used_or_plan_changed_total':
-    '被邀请人满足流量使用下限且订阅变化',
+    '被邀请人满足流量使用下限或订阅变化',
   'module.coupon.add_btn': '添加优惠卷',
   'module.coupon.list.column.id': '#',
   'module.coupon.list.column.name': '劵名称',
