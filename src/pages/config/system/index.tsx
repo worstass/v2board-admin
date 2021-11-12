@@ -107,6 +107,7 @@ const ConfigSystemPage: FC = () => {
 
       setFrontendProps({
         themeTemplates: themeTemplatesResult.data,
+        frontendTheme: configsResult.data.frontend.frontend_theme,
         frontendAdminPath: configsResult.data.frontend.frontend_admin_path,
         frontendThemeSidebar: configsResult.data.frontend.frontend_theme_sidebar === 'light',
         frontendThemeHeader: configsResult.data.frontend.frontend_theme_header === 'light',

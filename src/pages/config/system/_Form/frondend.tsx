@@ -7,6 +7,7 @@ import { useDebounceFn } from 'ahooks'
 
 export interface FormFrontendProps {
   themeTemplates: string[]
+  frontendTheme: string
   frontendAdminPath: string
   frontendThemeSidebar: boolean
   frontendThemeHeader: boolean
@@ -20,6 +21,7 @@ export interface FormFrontendProps {
 const FormFrontend: FC<Partial<FormFrontendProps>> = (props) => {
   const {
     themeTemplates,
+    frontendTheme,
     frontendAdminPath,
     frontendThemeSidebar,
     frontendThemeHeader,
@@ -29,8 +31,8 @@ const FormFrontend: FC<Partial<FormFrontendProps>> = (props) => {
     frontendCustomerServiceID,
     onChange,
   } = props
+  const frontendThemeRef = useRef<HTMLSelectElement>(null)
   const frontendAdminPathRef = useRef<HTMLInputElement>(null)
-  // const frontendThemeHeaderRef = useRef<HTMLButtonElement>(null)
   const frontendThemeColorRef = useRef<HTMLSelectElement>(null)
   const frontendBackgroundUrlRef = useRef<HTMLInputElement>(null)
   const frontendCustomerServiceMethodRef = useRef<HTMLSelectElement>(null)
@@ -44,6 +46,7 @@ const FormFrontend: FC<Partial<FormFrontendProps>> = (props) => {
   const { run } = useDebounceFn(
     () => {
       const data: Record<string, any> = {
+        frontend_theme :frontendThemeRef.current?.value,
         frontend_admin_path: frontendAdminPathRef.current?.value,
         frontend_theme_sidebar: Boolean(switchFrontendThemeSidebar) ? 'light' : 'dark',
         frontend_theme_header: Boolean(switchFrontendThemeHeader) ? 'light' : 'dark',
@@ -89,7 +92,12 @@ const FormFrontend: FC<Partial<FormFrontendProps>> = (props) => {
             </div>
           </div>
           <div className="col-lg-6 text-right">
-            <select className="form-control" defaultValue={'v2board'}>
+            <select
+              className="form-control"
+              defaultValue={frontendTheme}
+              ref={frontendThemeRef}
+              onChange={changeHandler}
+            >
               {themeTemplates?.map((theme: string) => {
                 return (
                   <option value={theme} key={theme}>
