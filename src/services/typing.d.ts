@@ -127,6 +127,7 @@ declare namespace API {
           reset_onetime_traffic_enable: number
         }
         frontend: {
+          frontend_theme: string
           frontend_theme_sidebar: string
           frontend_theme_header: string
           frontend_theme_color: string

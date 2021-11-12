@@ -350,7 +350,7 @@ export default {
   'module.server.manage.v2ray.network.edit_btn': '编辑配置',
   'module.server.manage.v2ray.network.placeholder': '选择传输协议',
   'module.server.manage.v2ray.network_settings.drawer.title': '编辑协议配置',
-  'module.server.manage.v2ray.network_settings.editor.placeholder': '编辑协议请再此输入JSON配置项',
+  'module.server.manage.v2ray.network_settings.editor.placeholder': '请在此输入JSON配置项',
   'module.server.manage.v2ray.rule_settings': '审计规则',
   'module.server.manage.v2ray.rule_settings.tip': '规则内的访问将会被拒绝',
   'module.server.manage.v2ray.rule_settings.edit_btn': '编辑规则',

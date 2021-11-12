@@ -11,8 +11,8 @@ export interface drawerTLSProps {
 
 const DrawerTLS: FC<drawerTLSProps> = (props) => {
   const { onClose, visible, defaultSettings } = props
-  const [serverName, setServerName] = useState('')
-  const [allowInsecure, setAllowInsecure] = useState<number>(0)
+  const [serverName, setServerName] = useState(defaultSettings?.serverName as string)
+  const [allowInsecure, setAllowInsecure] = useState<number>(defaultSettings?.allowInsecure ?? 0)
   const intl = useIntl()
 
   return (
