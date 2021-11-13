@@ -442,7 +442,7 @@ declare namespace API {
 
     interface V2rayTlsSettings {
       serverName: string
-      allowInsecure: number
+      allowInsecure: boolean
     }
 
     interface V2rayRuleSettings {

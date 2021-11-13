@@ -12,7 +12,7 @@ export interface drawerTLSProps {
 const DrawerTLS: FC<drawerTLSProps> = (props) => {
   const { onClose, visible, defaultSettings } = props
   const [serverName, setServerName] = useState(defaultSettings?.serverName as string)
-  const [allowInsecure, setAllowInsecure] = useState<number>(defaultSettings?.allowInsecure ?? 0)
+  const [allowInsecure, setAllowInsecure] = useState<boolean>(defaultSettings?.allowInsecure ?? false)
   const intl = useIntl()
 
   return (
@@ -50,9 +50,9 @@ const DrawerTLS: FC<drawerTLSProps> = (props) => {
           </label>
           <div>
             <Switch
-              defaultChecked={defaultSettings?.allowInsecure !== 0}
+              defaultChecked={defaultSettings?.allowInsecure}
               onChange={(checked) => {
-                setAllowInsecure(checked ? 1 : 0)
+                setAllowInsecure(checked)
               }}
             />
           </div>
