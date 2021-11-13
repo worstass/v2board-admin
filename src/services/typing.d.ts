@@ -333,6 +333,7 @@ declare namespace API {
       rate: number
       host: string
       port: number
+      alter_id: number
       server_port?: number
       cipher?: string
       updated_at: number
