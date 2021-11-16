@@ -658,6 +658,7 @@ declare namespace API {
           available_packages_total: number
           plan_changed_total: number
           paid_order_total: number
+          paid_order_first_total: number
           traffic_used_total: number
           traffic_used_and_plan_changed_total: number
           traffic_used_or_plan_changed_total: number

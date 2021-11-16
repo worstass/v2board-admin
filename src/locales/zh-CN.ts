@@ -149,11 +149,12 @@ export default {
   'module.config.system.invite.package_recovery_condition_type.tip': '系统将根据规则,恢复限制次数',
   'module.config.system.invite.package_recovery_condition_type.placeholder': '请选择',
   'module.config.system.invite.package_recovery_condition_type.option.zero': '被邀请人每次购买套餐',
-  'module.config.system.invite.package_recovery_condition_type.option.one': '被邀请人首次订阅变更',
-  'module.config.system.invite.package_recovery_condition_type.option.two': '被邀请人满足流量下限',
-  'module.config.system.invite.package_recovery_condition_type.option.three':
-    '被邀请人首次订阅变更并满足流量使用下限',
+  'module.config.system.invite.package_recovery_condition_type.option.one': '被邀请人首次购买套餐',
+  'module.config.system.invite.package_recovery_condition_type.option.two': '被邀请人首次订阅变更',
+  'module.config.system.invite.package_recovery_condition_type.option.three': '被邀请人满足流量下限',
   'module.config.system.invite.package_recovery_condition_type.option.four':
+    '被邀请人首次订阅变更并满足流量使用下限',
+  'module.config.system.invite.package_recovery_condition_type.option.five':
     '被邀请人首次订阅变更或者满足流量使用下限',
   'module.config.system.invite.package_recovery_traffic_lower_limit': '被邀用户使用流量下限',
   'module.config.system.invite.package_recovery_traffic_lower_limit.tip': ' ',
@@ -652,6 +653,7 @@ export default {
   'module.user.stats.invite.available_packages_total': '可获得礼包',
   'module.user.stats.invite.plan_changed_total': '被邀请人订阅变化',
   'module.user.stats.invite.paid_order_total': '被邀请人购买总单数',
+  'module.user.stats.invite.paid_order_first_total': '被邀请人首次购买数',
   'module.user.stats.invite.traffic_used_total': '被邀请人满足流量使用下限',
   'module.user.stats.invite.traffic_used_and_plan_changed_total':
     '被邀请人满足流量使用下限且订阅变化',

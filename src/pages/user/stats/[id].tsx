@@ -76,6 +76,12 @@ const UserStatsPage: FC<IRouteComponentProps> = (props) => {
             </Col>
             <Col span={8} className="p-2">
               <Statistic
+                title={intl.formatMessage({ id: 'module.user.stats.invite.paid_order_first_total' })}
+                value={adminUserStats?.data.invite.paid_order_first_total}
+              />
+            </Col>
+            <Col span={8} className="p-2">
+              <Statistic
                 title={intl.formatMessage({ id: 'module.user.stats.invite.traffic_used_total' })}
                 value={adminUserStats?.data.invite.traffic_used_total}
               />

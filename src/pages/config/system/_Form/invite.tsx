@@ -433,7 +433,7 @@ const FormInvite: FC<Partial<formInviteProps>> = (props) => {
             ref={packageRecoveryConditionTypeRef}
             defaultValue={packageRecoveryConditionType}
             onChange={(e: ChangeEvent<HTMLSelectElement>) => {
-              if (Number(e.target.value).valueOf() > 1) {
+              if (Number(e.target.value).valueOf() > 2) {
                 setDisplayPackageRecoveryChildren(true)
               } else {
                 setDisplayPackageRecoveryChildren(false)
@@ -467,6 +467,11 @@ const FormInvite: FC<Partial<formInviteProps>> = (props) => {
             <option value={4}>
               {intl.formatMessage({
                 id: 'module.config.system.invite.package_recovery_condition_type.option.four',
+              })}
+            </option>
+            <option value={5}>
+              {intl.formatMessage({
+                id: 'module.config.system.invite.package_recovery_condition_type.option.five',
               })}
             </option>
           </select>
