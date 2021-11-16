@@ -287,7 +287,7 @@ const DrawerV2ray: FC<drawerV2rayProps> = (props) => {
         <div className="row">
           <div className="form-group col-md-4 col-xs-12">
             <label>AlterID</label>
-            <Input type="number" ref={alterIDRef} min={0} max={65535} defaultValue={1} />
+            <Input type="number" ref={alterIDRef} min={0} max={65535} defaultValue={node?.alter_id} />
           </div>
           <div className="form-group col-md-8 col-xs-12">
             <label>
