@@ -394,6 +394,7 @@ export default {
   'module.knowledge.language.placeholder': '请选择知识语言',
   'module.knowledge.language.option.chinese': '中文',
   'module.knowledge.language.option.english': 'English',
+  'module.knowledge.language.option.vietnamese': 'Tiếng Việt',
   'module.knowledge.body': '内容',
   'module.plan.save_sort.message.success': '保存排序成功',
   'module.plan.add_btn': '添加订阅',
