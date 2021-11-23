@@ -60,7 +60,7 @@ const DrawerKnowledge: FC<drawerKnowledgeProps> = (props) => {
         placement="right"
         onClose={onClose}
         visible={visible}
-        width={'80%'}
+        width={window.innerWidth > 900 ? "80%" : window.innerWidth - 70}
         footer={
           <div className="float-right">
             <Button type="default" className="mx-lg-2" onClick={onClose}>

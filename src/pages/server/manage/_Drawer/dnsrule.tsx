@@ -139,7 +139,7 @@ const DrawerDNSRule: FC<drawerDnsRuleProps> = (props) => {
           )
         }}
         visible={visible}
-        width="500"
+        width={window.innerWidth > 900 ? 500 : window.innerWidth - 70}
       >
         <div className="form-group">
           <label>

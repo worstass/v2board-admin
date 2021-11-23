@@ -277,8 +277,8 @@ const DrawerFilter: FC<draweFilterProps> = (props) => {
         title={intl.formatMessage({ id: 'module.user.action.filter.drawer.title' })}
         placement="right"
         visible={visible}
-        width="500"
         onClose={onClose}
+        width={window.innerWidth > 900 ? 500 : window.innerWidth - 70}
         footer={
           <>
             <div className="float-left">

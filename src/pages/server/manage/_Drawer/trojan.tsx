@@ -80,7 +80,7 @@ const DrawerTrojan: FC<drawerTrojanProps> = (props) => {
         placement="right"
         onClose={onClose}
         visible={visible}
-        width="500"
+        width={window.innerWidth > 900 ? 500 : window.innerWidth - 70}
         destroyOnClose={destroy}
         footer={
           <div className="float-right">

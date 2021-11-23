@@ -131,7 +131,7 @@ const DrawerV2ray: FC<drawerV2rayProps> = (props) => {
         onClose={onClose}
         visible={visible}
         destroyOnClose={destroy}
-        width="500"
+        width={window.innerWidth > 900 ? 500 : window.innerWidth - 70}
         footer={
           <div className="float-right">
             <Button type="default" className="mx-lg-2" onClick={onClose}>

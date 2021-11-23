@@ -37,7 +37,7 @@ const DrawerNetwork: FC<drawerProps> = (props) => {
           }
         }}
         visible={visible}
-        width="500"
+        width={window.innerWidth > 900 ? 500 : window.innerWidth - 70}
       >
         <div id="v2ray-protocol">
           <div className="form-group">
