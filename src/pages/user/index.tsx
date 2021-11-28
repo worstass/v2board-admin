@@ -1,7 +1,7 @@
 import type { FC } from 'react'
 import { useIntl, Link, useLocation } from 'umi'
 import { useState, useEffect } from 'react'
-import { Button, Space, Menu, Dropdown, Modal, message } from 'antd'
+import { Button, Space, Menu, Dropdown, Modal, message, Tooltip} from 'antd'
 import { ExclamationCircleOutlined } from '@ant-design/icons'
 import ModalSendMail from './_Modal/sendMail'
 import ModalGenerate from './_Modal/generate'
@@ -181,12 +181,14 @@ const UserPage: FC = () => {
                   {intl.formatMessage({ id: 'module.user.filter_btn' })}
                 </Button>
                 <Dropdown overlay={actionMenu} placement="bottomCenter">
+                <Tooltip placement="right" title={intl.formatMessage({ id: 'module.user.filter_btn.tip' })}>
                   <Button
                     value="large"
                     icon={<SelectOutlined style={{ verticalAlign: '0.05rem' }} />}
                   >
                     {intl.formatMessage({ id: 'module.user.action_btn' })}
                   </Button>
+                  </Tooltip>
                 </Dropdown>
 
                 <Button

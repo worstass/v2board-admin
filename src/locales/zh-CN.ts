@@ -468,6 +468,7 @@ export default {
   'module.ticket.detail.user': '用户',
   'module.ticket.detail.enter_message': '输入内容回复工单...',
   'module.user.filter_btn': '过滤器',
+  'module.user.filter_btn.tip': 'Tips：可以使用过滤器过滤后再使用操作对过滤的用户进行操作。',
   'module.user.action_btn': '操作',
   'module.user.action.export_csv': '导出CSV',
   'module.user.action.send_email': '发送邮件',
