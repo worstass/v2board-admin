@@ -37,7 +37,7 @@ const FormEmail: FC<Partial<formEmailProps>> = (props) => {
   const emailPasswordRef = useRef<HTMLInputElement>(null)
   const emailEncryptionRef = useRef<HTMLInputElement>(null)
   const emailFromAddressRef = useRef<HTMLInputElement>(null)
-  const [testLoading, seTestLoading] = useState(false)
+  const [testLoading, setTestLoading] = useState(false)
 
 
   const intl = useIntl()
@@ -61,9 +61,9 @@ const FormEmail: FC<Partial<formEmailProps>> = (props) => {
 
 
   const testMailHookHandler = async () => {
-    seTestLoading(true)
+    setTestLoading(true)
     const setTelegramWebhookResult = await testSendMail()
-    seTestLoading(false)
+    setTestLoading(false)
     if (setTelegramWebhookResult === undefined) {
       return
     }
