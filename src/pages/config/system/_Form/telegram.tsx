@@ -39,7 +39,7 @@ const FormTelegram: FC<Partial<formTelegramProps>> = (props) => {
     }
     message.success(
       intl.formatMessage({
-        id: 'module.config.system.email.test_send_mail.message.success',
+        id: 'module.config.system.telegram.telegram_set_webhook.message.success',
       }),
     )
   }
