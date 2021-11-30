@@ -123,6 +123,19 @@ export async function setTelegramWebhook(
   })
 }
 
+
+export async function testSendMail(
+  options?: Record<string, any>
+) {
+  return request<API.Admin.TestSendMailResult>('/api/v1/admin/config/testSendMail', {
+    method: 'POST',
+    headers: {
+      'Content-Type': apiContentType,
+    },
+    ...(options || {}),
+  })
+}
+
 export async function payments(options?: Record<string, any>) {
   return request<API.Admin.PaymentsResult>('/api/v1/admin/payment/fetch', {
     method: 'GET',

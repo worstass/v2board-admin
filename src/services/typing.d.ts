@@ -254,6 +254,10 @@ declare namespace API {
       data: boolean
     }
 
+    interface TestSendMailResult {
+      data: boolean
+    }
+
     interface PaymentItem {
       config: Record<string, any>
       created_at: number

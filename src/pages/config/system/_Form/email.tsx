@@ -1,7 +1,9 @@
 import type { FC } from 'react'
 import { useIntl } from 'umi'
 import { useDebounceFn } from 'ahooks'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
+import { testSendMail } from '@/services'
+import {Button, message} from 'antd'
 
 export interface formEmailProps {
   emailTemplates: string[]
@@ -35,6 +37,8 @@ const FormEmail: FC<Partial<formEmailProps>> = (props) => {
   const emailPasswordRef = useRef<HTMLInputElement>(null)
   const emailEncryptionRef = useRef<HTMLInputElement>(null)
   const emailFromAddressRef = useRef<HTMLInputElement>(null)
+  const [testLoading, seTestLoading] = useState(false)
+
 
   const intl = useIntl()
 
@@ -53,8 +57,22 @@ const FormEmail: FC<Partial<formEmailProps>> = (props) => {
     },
     { wait: 1000 },
   )
-
   const changeHandler = run
+
+
+  const testMailHookHandler = async () => {
+    seTestLoading(true)
+    const setTelegramWebhookResult = await testSendMail()
+    seTestLoading(false)
+    if (setTelegramWebhookResult === undefined) {
+      return
+    }
+    message.success(
+      intl.formatMessage({
+        id: 'module.config.system.email.test_send_mail.message.success',
+      }),
+    )
+  }
 
   return (
     <>
@@ -230,6 +248,31 @@ const FormEmail: FC<Partial<formEmailProps>> = (props) => {
                 )
               })}
             </select>
+          </div>
+        </div>
+
+        <div className="row p-4 border-bottom">
+          <div className="col-lg-6">
+            <div className="font-weight-bold my-1">
+              {intl.formatMessage({ id: 'module.config.system.email.test_send_mail' })}
+            </div>
+            <div className="font-size-sm my-1">
+              {intl.formatMessage({ id: 'module.config.system.email.test_send_mail.tip' })}
+            </div>
+          </div>
+          <div className="col-lg-6 text-right">
+            <Button
+              type="primary"
+              onClick={(e: React.MouseEvent) => {
+                e.preventDefault()
+                testMailHookHandler()
+              }}
+              loading={testLoading}
+            >
+              {intl.formatMessage({
+                id: 'module.config.system.email.test_send_mail.btn',
+              })}
+            </Button>
           </div>
         </div>
       </div>

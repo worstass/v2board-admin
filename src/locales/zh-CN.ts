@@ -201,6 +201,11 @@ export default {
   'module.config.system.email.email_template': '邮件模板',
   'module.config.system.email.email_template.tip': '你可以在文档查看如何自定义邮件模板',
   'module.config.system.email.email_template.placeholder': '请选择',
+  'module.config.system.email.test_send_mail': '发送测试邮件',
+  'module.config.system.email.test_send_mail.tip':
+    '邮件将会发送到当前登陆用户邮箱。',
+  'module.config.system.email.test_send_mail.btn': '一键测试',
+  'module.config.system.email.test_send_mail.message.success': '邮件测试成功',
   'module.config.system.telegram': 'Telegram',
   'module.config.system.telegram.telegram_bot_enable': '开启机器人通知',
   'module.config.system.telegram.telegram_bot_enable.tip':
