@@ -62,9 +62,9 @@ const FormEmail: FC<Partial<formEmailProps>> = (props) => {
 
   const testMailHookHandler = async () => {
     setTestLoading(true)
-    const setTelegramWebhookResult = await testSendMail()
+    const testSendMailResult = await testSendMail()
     setTestLoading(false)
-    if (setTelegramWebhookResult === undefined) {
+    if (testSendMailResult === undefined) {
       return
     }
     message.success(
