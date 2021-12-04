@@ -1,9 +1,11 @@
 import type { FC } from 'react'
-import { Table, Divider, message } from 'antd'
+import { Table, Divider, Space, message } from 'antd'
 import { useIntl, Link } from 'umi'
+import {UserOutlined, CloudServerOutlined } from '@ant-design/icons'
 import React, { useState } from 'react'
 import { groupDrop } from '@/services'
 import ModalGroup from '@/components/Modal/group'
+
 
 const { Column } = Table
 
@@ -49,6 +51,30 @@ const List: FC<listProps> = (props) => {
           title={intl.formatMessage({ id: 'module.server.group.list.column.name' })}
           dataIndex="name"
           key="name"
+        />
+         <Column
+          title={intl.formatMessage({ id: 'module.server.group.list.column.user_count' })}
+          dataIndex="user_count"
+          key="user_count"
+          render={(userCount:number)=>(
+            <>
+             <Space>
+              <UserOutlined style={{ verticalAlign: '0.05rem' }} />{userCount}
+              </Space>
+            </>
+          )}
+        />
+        <Column
+          title={intl.formatMessage({ id: 'module.server.group.list.column.server_count' })}
+          dataIndex="server_count"
+          key="server_count"
+          render={(serverCount:number)=>(
+            <>
+             <Space>
+              <CloudServerOutlined style={{ verticalAlign: '0.05rem' }} />{serverCount}
+              </Space>
+            </>
+          )}
         />
         <Column
           title={intl.formatMessage({ id: 'module.server.group.list.column.action' })}

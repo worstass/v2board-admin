@@ -309,6 +309,8 @@ declare namespace API {
     interface GroupItem {
       id: number
       name: string
+      user_count: number
+      server_count: number
       created_at: number
       updated_at: number
     }
