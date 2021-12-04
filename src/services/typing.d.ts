@@ -310,6 +310,7 @@ declare namespace API {
       id: number
       name: string
       user_count: number
+      valid_user_count: number
       server_count: number
       created_at: number
       updated_at: number

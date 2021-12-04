@@ -1,11 +1,10 @@
 import type { FC } from 'react'
-import { Table, Divider, Space, message } from 'antd'
+import { Table, Divider, Space, Tooltip, message } from 'antd'
 import { useIntl, Link } from 'umi'
-import {UserOutlined, CloudServerOutlined } from '@ant-design/icons'
+import { UserOutlined, CloudServerOutlined, QuestionCircleOutlined } from '@ant-design/icons'
 import React, { useState } from 'react'
 import { groupDrop } from '@/services'
 import ModalGroup from '@/components/Modal/group'
-
 
 const { Column } = Table
 
@@ -52,14 +51,24 @@ const List: FC<listProps> = (props) => {
           dataIndex="name"
           key="name"
         />
-         <Column
-          title={intl.formatMessage({ id: 'module.server.group.list.column.user_count' })}
+        <Column
+          title={
+            <>
+              <Space>
+                {intl.formatMessage({ id: 'module.server.group.list.column.user_count' })}
+                <Tooltip title={intl.formatMessage({ id: 'module.server.group.list.column.user_count.tip' })}>
+                  <QuestionCircleOutlined style={{ verticalAlign: '0.05rem' }} />
+                </Tooltip>
+              </Space>
+            </>
+          }
           dataIndex="user_count"
           key="user_count"
-          render={(userCount:number)=>(
+          render={(userCount: number, recored: API.Admin.GroupItem) => (
             <>
-             <Space>
-              <UserOutlined style={{ verticalAlign: '0.05rem' }} />{userCount}
+              <Space>
+                <UserOutlined style={{ verticalAlign: '0.05rem' }} />
+                {recored.valid_user_count}/{userCount}
               </Space>
             </>
           )}
@@ -68,10 +77,11 @@ const List: FC<listProps> = (props) => {
           title={intl.formatMessage({ id: 'module.server.group.list.column.server_count' })}
           dataIndex="server_count"
           key="server_count"
-          render={(serverCount:number)=>(
+          render={(serverCount: number) => (
             <>
-             <Space>
-              <CloudServerOutlined style={{ verticalAlign: '0.05rem' }} />{serverCount}
+              <Space>
+                <CloudServerOutlined style={{ verticalAlign: '0.05rem' }} />
+                {serverCount}
               </Space>
             </>
           )}

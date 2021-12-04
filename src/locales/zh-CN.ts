@@ -346,6 +346,7 @@ export default {
   'module.server.group.list.column.id': '组ID',
   'module.server.group.list.column.name': '组名称',
   'module.server.group.list.column.user_count': '用户数',
+  'module.server.group.list.column.user_count.tip': '未过期用户数 / 历史总用户数',
   'module.server.group.list.column.server_count': '节点数',
   'module.server.group.list.column.action': '操作',
   'module.server.group.list.column.action.edit': '编辑',
