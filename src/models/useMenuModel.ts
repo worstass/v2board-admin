@@ -78,6 +78,11 @@ export const menus: Menus = {
       path: '/knowledge',
       icon: 'bulb',
     },
+    '12': {
+      name: 'module.global',
+      path: '/global',
+      icon: 'global',
+    },
   },
   getPath: (index: string): string => {
     return menus.data[index] ? menus.data[index].path : ''
