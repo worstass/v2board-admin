@@ -102,7 +102,7 @@ const Overview: FC = () => {
                 to="#"
                 onClick={(e: React.MouseEvent) => e.preventDefault()}
               >
-                {adminStat?.data.commission_pending_total}
+                {intl.formatMessage({ id: 'module.dashboard.commission_pending_total' })}
               </Link>
             </div>
             <div>
