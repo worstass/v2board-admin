@@ -137,6 +137,7 @@ const ConfigSystemPage: FC = () => {
         emailPassword: configsResult.data.email.email_password as string,
         emailEncryption: configsResult.data.email.email_encryption as string,
         emailFromAddress: configsResult.data.email.email_from_address as string,
+        emailRateLimit: String(configsResult.data.email.email_rate_limit as number).valueOf(),
         onChange: saveHandler,
       })
 

@@ -148,6 +148,7 @@ declare namespace API {
           email_password?: string
           email_encryption?: string
           email_from_address?: string
+          email_rate_limit?: number
         }
         server: {
           server_token?: string
