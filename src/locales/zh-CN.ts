@@ -34,7 +34,7 @@ export default {
   'module.dashboard.last_month_income': '上月收入合计',
   'module.dashboard.month_register_total': '本月新增用户',
   'module.dashboard.ticket_pending_total': '待办工单',
-  'module.dashboard.commission_pending_tota': '佣金待确认',
+  'module.dashboard.commission_pending_total': '佣金待确认',
   'module.dashboard.server_last_rank': '昨日节点流量排行',
   'module.dashboard.monitor_stats.warning': '当前队列服务运行异常，可能会导致业务无法使用。',
   'module.config.system.message.sava_success': '保存成功',
@@ -201,6 +201,9 @@ export default {
   'module.config.system.email.email_template': '邮件模板',
   'module.config.system.email.email_template.tip': '你可以在文档查看如何自定义邮件模板',
   'module.config.system.email.email_template.placeholder': '请选择',
+  'module.config.system.email.email_rate_limit': '发件频率限制',
+  'module.config.system.email.email_rate_limit.tip': '一些 SMTP 服务商限制了发件频率，可以在这里控制发件频率，单位为(次/分钟)，修改后需要重启队列方能生效',
+  'module.config.system.email.email_rate_limit.placeholder': '请输入',
   'module.config.system.email.test_send_mail': '发送测试邮件',
   'module.config.system.email.test_send_mail.tip':
     '邮件将会发送到当前登陆用户邮箱。',

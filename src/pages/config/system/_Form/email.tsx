@@ -14,6 +14,7 @@ export interface formEmailProps {
   emailPassword: string
   emailEncryption: string
   emailFromAddress: string
+  emailRateLimit: string
   onChange: (data: Record<string, any>) => void
 }
 
@@ -27,6 +28,7 @@ const FormEmail: FC<Partial<formEmailProps>> = (props) => {
     emailPassword,
     emailEncryption,
     emailFromAddress,
+    emailRateLimit,
     onChange,
   } = props
 
@@ -37,6 +39,7 @@ const FormEmail: FC<Partial<formEmailProps>> = (props) => {
   const emailPasswordRef = useRef<HTMLInputElement>(null)
   const emailEncryptionRef = useRef<HTMLInputElement>(null)
   const emailFromAddressRef = useRef<HTMLInputElement>(null)
+  const emailRateLimitRef = useRef<HTMLInputElement>(null)
   const [testLoading, setTestLoading] = useState(false)
 
 
@@ -52,6 +55,7 @@ const FormEmail: FC<Partial<formEmailProps>> = (props) => {
         email_password: emailPasswordRef.current?.value,
         email_encryption: emailEncryptionRef.current?.value,
         email_from_address: emailFromAddressRef.current?.value,
+        email_rate_limit: Number(emailRateLimitRef.current?.value).valueOf(),
       }
       onChange?.(data)
     },
@@ -248,6 +252,29 @@ const FormEmail: FC<Partial<formEmailProps>> = (props) => {
                 )
               })}
             </select>
+          </div>
+        </div>
+
+        <div className="row p-4 border-bottom">
+          <div className="col-lg-6">
+            <div className="font-weight-bold my-1">
+              {intl.formatMessage({ id: 'module.config.system.email.email_rate_limit' })}
+            </div>
+            <div className="font-size-sm my-1">
+              {intl.formatMessage({ id: 'module.config.system.email.email_rate_limit.tip' })}
+            </div>
+          </div>
+          <div className="col-lg-6 text-right">
+            <input
+              type="number"
+              className="form-control"
+              placeholder={intl.formatMessage({
+                id: 'module.config.system.email.email_rate_limit.placeholder',
+              })}
+              defaultValue={emailRateLimit}
+              ref={emailRateLimitRef}
+              onChange={changeHandler}
+            />
           </div>
         </div>
 
