@@ -3,12 +3,13 @@ import type { FC } from 'react'
 import Nav from './_Nav'
 import Overriew from './_Overview'
 import ServerRank from './_ServerRank'
+import MonitorStats from "./_MonitorStats";
 
 const dashboardPage: FC = () => {
   return (
     <>
       <div className="p-0 p-lg-4">
-        {/*<MonitorStats />*/}
+        <MonitorStats />
         <Nav />
         <div className="row no-gutters">
           <Overriew />

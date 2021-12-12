@@ -27,3 +27,5 @@ yarn-error.log
 /.histrory
 /.idea
 /.vscode
+
+config/config.DEV.ts
